@@ -12,6 +12,7 @@ export default {
     if (!['GET', 'POST'].includes(request.method)) return reply({ error: 'Method not allowed.' }, 405);
     if (request.method === 'POST' && !sameOrigin(request)) return reply({ error: 'Same-origin JSON requests required.' }, 403);
     try {
+      if (url.pathname === '/api/artwork' && request.method === 'GET') return reply(await detail(url.searchParams.get('source'), url.searchParams.get('id')));
       if (url.pathname === '/api/search' && request.method === 'GET') return reply(await searchAll(url.searchParams.get('q'), Math.min(100, Math.max(1, Number(url.searchParams.get('page')) || 1))));
       const id = env.TV.idFromName('fireplace');
       return await env.TV.get(id).fetch(request);
