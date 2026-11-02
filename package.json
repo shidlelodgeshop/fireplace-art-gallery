@@ -1,0 +1,35 @@
+{
+  "name": "fireplace-art-gallery",
+  "version": "1.0.0",
+  "description": "Museum artwork for my Samsung TV.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build.mjs",
+    "dev": "npx wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shidlelodgeshop/fireplace-art-gallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/shidlelodgeshop/fireplace-art-gallery/issues"
+  },
+  "homepage": "https://github.com/shidlelodgeshop/fireplace-art-gallery#readme",
+  "dependencies": {
+    "@cf-wasm/photon": "^0.4.0",
+    "jose": "^6.2.15"
+  },
+  "devDependencies": {
+    "wrangler": "^4.156.2"
+  },
+  "private": true
+}
