@@ -1,3 +1,4 @@
+import { screenSuitable } from './museums.js';
 import { options, geometry, jpegDimensions } from './display.js';
 // The phone computes one JPEG, then hands it off. It never hosts the TV artwork.
 export async function prepareJPEG(url, input) {
@@ -9,6 +10,7 @@ export async function prepareJPEG(url, input) {
   const blob = new Blob(chunks, { type: 'image/jpeg' });
   const dimensions = jpegDimensions(new Uint8Array(await blob.arrayBuffer()));
   if (!dimensions.width || !dimensions.height || dimensions.width * dimensions.height > 6000000) throw new Error('Museum image is too large to prepare safely. Choose another painting.');
+  if (!screenSuitable(dimensions)) throw new Error('This painting needs too much cropping for your widescreen TV. Choose a wider painting.');
   const objectURL = URL.createObjectURL(blob), image = new Image();
   try {
     image.src = objectURL; await image.decode();

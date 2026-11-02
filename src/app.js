@@ -1,5 +1,5 @@
 import { prepareJPEG } from './format.js';
-import { searchAll, detail, normalizeQuery } from './museums.js';
+import { searchAll, detail, normalizeQuery, screenSuitable } from './museums.js';
 const $ = id => document.getElementById(id);
 const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
 const write = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Private browsing/storage full must not break the gallery. */ } };
@@ -11,7 +11,9 @@ async function fallbackCatalog(q) {
   return catalog.artworks.filter(a => { const text = [a.title, a.artist, a.date, a.museum, ...(a.topics || [])].join(' ').toLowerCase(); return words.every(w => text.includes(w)); });
 }
 let favorites = read('fireplace-favorites', []), selected, page = 1, generation = 0, showingFavorites = false, results = [];
-let backend = read('fireplace-backend', 'https://fireplace-art-controller.fireplace-art-gallery.workers.dev'), settings = read('fireplace-settings', { mode: 'fit', brightness: 70, background: '#000000' });
+let backend = read('fireplace-backend', 'https://fireplace-art-controller.fireplace-art-gallery.workers.dev'), settings = read('fireplace-settings', { mode: 'fill', brightness: 70, background: '#000000' });
+// Migrate old fit preferences to edge-to-edge presentation.
+settings.mode = 'fill';
 // workers.dev or a custom controller hostname is detected through an explicit /controller path.
 const controller = location.pathname.startsWith('/controller');
 let last = read('fireplace-last', null);
@@ -24,7 +26,9 @@ function render() {
     const card = document.createElement('button'); card.className = 'card'; card.setAttribute('aria-label', `${artwork.title}, ${artwork.artist}`);
     const wrap = document.createElement('div'); wrap.className = 'art-image';
     const img = document.createElement('img'); img.src = artwork.thumbnail; img.alt = artwork.title; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer';
-    img.onerror = () => { wrap.textContent = 'Image unavailable'; };
+    card.style.visibility = 'hidden';
+    img.onload = () => { const sized = {...artwork,width:img.naturalWidth,height:img.naturalHeight}; if (!screenSuitable(sized)) { card.remove(); results = results.filter(a => key(a) !== key(artwork)); } else { Object.assign(artwork,sized); card.style.visibility='visible'; } };
+    img.onerror = () => { card.remove(); };
     wrap.append(img); card.append(wrap);
     for (const [tag, text] of [['h3', artwork.title], ['p', `${artwork.artist} · ${artwork.date}`], ['small', artwork.museum]]) { const el = document.createElement(tag); el.textContent = text; card.append(el); }
     card.onclick = () => preview(artwork); $('grid').append(card);
@@ -36,7 +40,7 @@ async function search(append = false) {
   const run = ++generation; showingFavorites = false; if (!append) { page = 1; results = []; render(); }
   say('results-heading', q); say('message', 'Looking through the museum collections…'); $('more').hidden = true;
   try {
-    const data = controller ? await api(`/api/search?q=${encodeURIComponent(q)}&page=${page}`) : await searchAll(q, page);
+    const data = controller ? await api(`/api/search?q=${encodeURIComponent(q)}&page=${page}`) : await fetch(`${new URL('/public/search',backend).href}?q=${encodeURIComponent(q)}&page=${page}`,{signal:AbortSignal.timeout(25000)}).then(r=>{if(!r.ok) throw new Error('Museum search temporarily unavailable.');return r.json();});
     if (!controller && data.warnings.length) {
       const fallback = await fallbackCatalog(q);
       const seen = new Set(data.artworks.map(key));
@@ -44,13 +48,13 @@ async function search(append = false) {
       data.warnings = ['Some museums could not be searched live in this browser. Results include a saved starter collection. Open your secure controller for full live search.'];
     }
     if (run !== generation) return;
-    const known = new Set(results.map(key)); results.push(...data.artworks.filter(a => !known.has(key(a)))); render();
-    say('message', `${results.length} paintings${data.artworks.length ? '' : ' · No more eligible paintings on this page. Try another search.'}${data.warnings.length ? '\n' + data.warnings.join('\n') : ''}`);
+    const known = new Set(results.map(key)); results.push(...data.artworks.filter(a => !known.has(key(a)) && (!a.width || screenSuitable(a)))); render();
+    say('message', `${results.length} candidates · only widescreen paintings are shown after image checks${data.artworks.length ? '' : ' · No more eligible paintings on this page. Try another search.'}${data.warnings.length ? '\n' + data.warnings.join('\n') : ''}`);
     $('more').hidden = data.artworks.length === 0 && data.warnings.length === 0;
   } catch (e) { if (run === generation) say('message', e.message); }
 }
 function updatePreview() {
-  settings = { mode: $('mode').value, background: $('background').value, brightness: Number($('brightness').value) };
+  settings = { mode: 'fill', background: $('background').value, brightness: Number($('brightness').value) };
   $('preview-image').style.objectFit = settings.mode === 'fill' ? 'cover' : 'contain';
   $('preview-image').style.filter = `brightness(${settings.brightness}%)`;
   document.querySelector('.tv-frame').style.background = settings.background;
@@ -79,8 +83,8 @@ async function api(path, body) {
 $('search-form').onsubmit = e => { e.preventDefault(); search(); };
 document.querySelectorAll('.suggestions button').forEach(b => b.onclick = () => { $('query').value = b.textContent; search(); });
 $('more').onclick = () => { page++; search(true); };
-$('favorites').onclick = () => { ++generation; showingFavorites = true; results = [...favorites]; render(); say('results-heading', 'Your favorites'); say('message', favorites.length ? 'Saved on this device.' : 'Open a painting and tap Save to begin your collection.'); $('more').hidden = true; };
-$('save').onclick = () => { const exists = favorites.some(a => key(a) === key(selected)); favorites = exists ? favorites.filter(a => key(a) !== key(selected)) : [...favorites, selected]; write('fireplace-favorites', favorites); saveLabel(); count(); if (showingFavorites) { results = [...favorites]; render(); } };
+$('favorites').onclick = () => { ++generation; showingFavorites = true; results = favorites.filter(a => !a.width || screenSuitable(a)); render(); say('results-heading', 'Your favorites'); say('message', favorites.length ? 'Saved on this device.' : 'Open a painting and tap Save to begin your collection.'); $('more').hidden = true; };
+$('save').onclick = () => { const exists = favorites.some(a => key(a) === key(selected)); favorites = exists ? favorites.filter(a => key(a) !== key(selected)) : [...favorites, selected]; write('fireplace-favorites', favorites); saveLabel(); count(); if (showingFavorites) { results = favorites.filter(a => !a.width || screenSuitable(a)); render(); } };
 for (const id of ['mode', 'background', 'brightness']) $(id).oninput = updatePreview;
 document.querySelectorAll('dialog .close').forEach(b => b.onclick = () => b.closest('dialog').close());
 $('settings').onclick = () => { $('backend').value = backend; $('connection').showModal(); };
@@ -110,7 +114,7 @@ $('check-status').onclick = async () => {
 count();
 const hash = new URLSearchParams(location.search || location.hash.slice(1));
 if (controller && hash.has('source')) {
-  try { settings = { mode: hash.get('mode') === 'fill' ? 'fill' : 'fit', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await api(`/api/artwork?${new URLSearchParams({ source: hash.get('source'), id: hash.get('id') })}`); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
+  try { settings = { mode: 'fill', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await api(`/api/artwork?${new URLSearchParams({ source: hash.get('source'), id: hash.get('id') })}`); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
 } else if (last) { preview(last); } else if (controller) {
   try { const state = await api('/api/status'); if (state.last?.artwork) preview(state.last.artwork); } catch (e) { say('message', e.message); }
 }
