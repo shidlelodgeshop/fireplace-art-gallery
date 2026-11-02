@@ -51,3 +51,9 @@ test('identical selection rechecks remote playlist without reupload',async()=>{
  globalThis.fetch=async()=>{calls++;return response({items:[{mediafileId:9}]});};
  try{const c=new TVController({storage:{get:async k=>data.get(k)}},{ABLESIGN_API_KEY:'x',ABLESIGN_SCREEN_ID:'1'});const r=await c.fetch(new Request('https://a/api/display',{method:'POST',body:JSON.stringify({source:'artic',id:'1'})}));assert.equal(r.status,200);assert.equal(calls,1);}finally{globalThis.fetch=real;}
 });
+test('multipart TV uploads are same-origin only',()=>{assert.ok(sameOrigin(new Request('https://a/api/display',{headers:{Origin:'https://a','Content-Type':'multipart/form-data; boundary=test'}})));assert.equal(sameOrigin(new Request('https://a/api/display',{headers:{Origin:'https://evil','Content-Type':'multipart/form-data; boundary=test'}})),false);});
+test('backend refuses an unformatted image before changing playlist',async()=>{
+ const real=globalThis.fetch;const data=new Map();let mutations=0;
+ globalThis.fetch=async(u,o)=>{if(o?.method==='PUT')mutations++;if(u.endsWith('/playlist'))return response({items:[]});if(u.includes('/screens/'))return response({id:1,screenGroupId:null});if(u.includes('/artworks/'))return response({id:1,is_public_domain:true,image_id:'x',artwork_type_title:'Painting'});throw new Error('Unexpected fetch');};
+ try{const c=new TVController({storage:{get:async k=>data.get(k),put:async(k,v)=>data.set(k,v)}},{ABLESIGN_API_KEY:'x',ABLESIGN_SCREEN_ID:'1'});const r=await c.fetch(new Request('https://a/api/display',{method:'POST',body:JSON.stringify({source:'artic',id:'1'})}));assert.equal(r.status,400);assert.equal(mutations,0);}finally{globalThis.fetch=real;}
+});
