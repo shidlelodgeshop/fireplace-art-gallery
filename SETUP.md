@@ -4,26 +4,26 @@ The gallery runs on GitHub Pages. TV operations run on your authenticated Cloudf
 
 ## One-time setup
 
-1. From this repository, run `npm ci`, then `npx wrangler login`. Complete Cloudflare's account authorization yourself.
-2. Run `npm run build` and `npx wrangler deploy`. Without identity settings the Worker rejects all requests, including assets. It is safe to deploy in this locked state. Record the workers.dev address.
-3. In Cloudflare Zero Trust, create a **self-hosted Access application** protecting the **entire controller hostname**. Enable workers.dev Access protection if your dashboard offers it. Add an Allow policy for **only your own email**, using email one-time PIN or your existing identity provider. Do not create Bypass or Everyone policies. Copy the team domain and application AUD tag.
-4. In the Worker's Settings → Variables and Secrets, set these as **secrets** (or use `npx wrangler secret put NAME`, which prompts without putting values in shell arguments):
+The backend has been deployed at `https://fireplace-art-controller.fireplace-art-gallery.workers.dev`. It stays locked until these secrets exist. No Cloudflare Zero Trust subscription or card is required for this login method.
 
-   - `ABLESIGN_API_KEY`: your existing Read/Write key, entered only into Cloudflare's secret input.
-   - `ACCESS_TEAM_DOMAIN`: just the hostname, e.g. `your-team.cloudflareaccess.com`.
-   - `ACCESS_AUD`: your Access application's audience tag.
-   - `OWNER_EMAIL`: the exact email used to sign in.
+1. Choose a **32–128 character random ASCII password** in your password manager. This is a new controller password, separate from your AbleSign key. Username: **fireplace**. Spaces and non-ASCII characters are not accepted. The backend refuses weak/short configured passwords. Use a randomly generated password, not a sentence or reused password.
+2. Enter these through Cloudflare's Worker → Settings → Variables and Secrets, type **Secret**. Alternatively run `npx wrangler secret put NAME` in a terminal; it hides your input and avoids command-line arguments:
+
+   - `CONTROLLER_PASSWORD`: the random password above.
+   - `ABLESIGN_API_KEY`: your existing Read/Write AbleSign key.
    - Optional `ABLESIGN_WORKSPACE_ID` if you use a nondefault workspace.
 
-   Identity settings are deliberately absent from the tracked configuration so deploying code preserves your server secrets. Never commit secret values. No key belongs in the gallery's Connect TV dialog.
-5. Visit `https://YOUR-CONTROLLER/api/screens` in the browser, sign in, and identify the paired Fire Stick by title. Set `ABLESIGN_SCREEN_ID` as a server secret to its numeric ID. A screen in a screen group is refused to avoid unexpected group behavior.
-6. On the GitHub gallery, tap **Connect TV**, paste **only the controller address**, and Save. Search/select a painting, choose fit/fill, surround, and brightness, then Display on TV. This opens the controller as a top-level page, avoiding Safari's third-party-cookie restrictions. After sign-in, confirm with Display on TV. This replaces that screen's existing playlist with the selected image only.
+   Never paste keys into chat, source, browser JavaScript or the gallery Connect TV dialog. HTTP Basic authentication is handled by Safari's native login prompt over HTTPS, not by the gallery JavaScript. It may ask you to sign in again after a browser restart. Use the password manager to retain the controller password. Secrets are absent from the tracked Wrangler configuration so deploying code preserves them.
+3. Open `https://fireplace-art-controller.fireplace-art-gallery.workers.dev/api/screens`. Sign in as **fireplace** with the controller password. Identify the paired Fire Stick by title. Set `ABLESIGN_SCREEN_ID` as another server secret to its numeric ID. Grouped screens are refused to avoid unexpected group behavior.
+4. Open the GitHub gallery, search/select a painting, choose fit/fill, surround, and brightness, then Display on TV. The deployed controller address is already configured. This opens the controller as a top-level page, avoiding Safari third-party-cookie restrictions. Confirm with Display on TV after signing in. Keep that page open during the one-time JPEG preparation/upload; once confirmed, you can lock the phone. This replaces that screen's existing AbleSign playlist with the selected image only.
+
+For another account/clone: `npm ci`, `npx wrangler login`, `npm run build`, `npx wrangler deploy`; update the frontend controller address and enter the server secrets. The Worker fails closed until configured. An alternative Cloudflare Access JWT path remains supported if `CONTROLLER_PASSWORD` is absent and `ACCESS_TEAM_DOMAIN`, `ACCESS_AUD` and `OWNER_EMAIL` are all set. Do not activate Access unless you independently accept its plan's billing terms; the dashboard asked for billing and overage authorization even for its $0 plan during setup.
 
 The authenticated controller also has the complete live museum search. GitHub Pages tries direct API search and falls back to the labelled saved starter collection when museum CORS or availability prevents a browser search. Favorites and last preview are local to each origin/device. The controller stores the last submitted artwork independently on the server. A lost or locked phone does not interrupt playback.
 
 ## Cost and capacity
 
-GitHub Pages is appropriate for this public repository. The backend targets Cloudflare Workers Free with SQLite-backed Durable Objects and Cloudflare Access's free allowance. Image rendering runs once in the phone's canvas, so the Worker does not decode or resize museum images and does not need an image-processing subscription. No paid service has been enabled. Keep the controller open until submission finishes; afterward the phone is unnecessary. Free service limits still apply and must be checked in the deployed account. The @cf-wasm/photon dependency is used only for local reference-rendering tests and is excluded from the production Worker bundle.
+GitHub Pages is appropriate for this public repository. The backend targets Cloudflare Workers Free with SQLite-backed Durable Objects and native browser password authentication. Image rendering runs once in the phone's canvas, so the Worker does not decode or resize museum images and does not need an image-processing subscription. No paid service has been enabled. Keep the controller open until submission finishes; afterward the phone is unnecessary. Free service limits still apply and must be checked in the deployed account. The @cf-wasm/photon dependency is used only for local reference-rendering tests and is excluded from the production Worker bundle.
 
 Generated JPEG variants accumulate in AbleSign (a unique variant for each artwork/settings combination) and are reused. This avoids destructive cleanup of your library but eventually consumes storage. Delete old `fireplace-…` files through AbleSign during occasional maintenance. Cached records of deleted files currently need controller storage maintenance before that variant can be used again. No automatic deletion of existing account media is performed.
 
