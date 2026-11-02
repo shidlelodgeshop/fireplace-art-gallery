@@ -1,6 +1,22 @@
 import { createRemoteJWKSet, jwtVerify } from 'jose';
 let certs, lastIssuer;
 export async function authorized(request, env, verify = jwtVerify) {
+  // Optional single-owner HTTP Basic login. Browser-owned credentials never enter app JS.
+  if (env.CONTROLLER_PASSWORD) {
+    if (!/^[!-~]{32,128}$/.test(env.CONTROLLER_PASSWORD)) return false;
+    try {
+      const header = request.headers.get('Authorization') || '';
+      if (!header.startsWith('Basic ')) return false;
+      const value = atob(header.slice(6));
+      if (!value.startsWith('fireplace:')) return false;
+      const password = value.slice(10);
+      const encoder = new TextEncoder();
+      const [actual, expected] = await Promise.all([password, env.CONTROLLER_PASSWORD].map(p => crypto.subtle.digest('SHA-256', encoder.encode(p))));
+      const a = new Uint8Array(actual), b = new Uint8Array(expected);
+      let difference = 0; for (let i = 0; i < a.length; i++) difference |= a[i] ^ b[i];
+      return difference === 0;
+    } catch { return false; }
+  }
   if (!env.ACCESS_TEAM_DOMAIN || !env.ACCESS_AUD || !env.OWNER_EMAIL) return false;
   const token = request.headers.get('Cf-Access-Jwt-Assertion');
   if (!token) return false;

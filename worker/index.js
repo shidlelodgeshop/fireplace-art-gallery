@@ -6,7 +6,7 @@ const reply = (data, status = 200, extra = {}) => Response.json(data, { status, 
 export default {
   async fetch(request, env) {
     // Fail closed even if the Access edge application was accidentally removed.
-    if (!await authorized(request, env)) return reply({ error: 'Sign in through your Cloudflare Access controller. Server identity configuration may be incomplete.' }, 401);
+    if (!await authorized(request, env)) return reply({ error: 'Sign in to your private art controller. If no login is offered, the server login secret has not been configured.' }, 401, env.CONTROLLER_PASSWORD ? { 'WWW-Authenticate': 'Basic realm="Fireplace Art Controller", charset="UTF-8"' } : {});
     const url = new URL(request.url);
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
     if (!['GET', 'POST'].includes(request.method)) return reply({ error: 'Method not allowed.' }, 405);
