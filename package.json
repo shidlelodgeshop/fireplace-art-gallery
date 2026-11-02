@@ -29,7 +29,9 @@
     "jose": "^6.2.15"
   },
   "devDependencies": {
-    "wrangler": "^4.156.2"
+    "wrangler": "^4.156.2",
+    "miniflare": "5.20261102.0-beta",
+    "esbuild": "0.28.2"
   },
   "private": true
 }

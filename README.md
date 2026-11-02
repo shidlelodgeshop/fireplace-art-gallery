@@ -8,6 +8,6 @@ A mobile museum art picker for a 1920 × 1080 television using AbleSign on Fire 
 - `npm run dev` starts the Cloudflare emulator. Missing identity settings intentionally produce HTTP 401. For public gallery preview: `python3 -m http.server 4173 --directory dist`.
 - `node scripts/catalog.mjs` refreshes the explicitly labelled fallback starter collection from official museum APIs. This is not the complete museum catalog.
 
-**Status:** Frontend and backend implemented; account configuration, server deployment, AbleSign entitlements and physical TV playback must be verified before declaring the system operational. GitHub Actions tests and deploys the public frontend. Server secrets never belong in frontend code.
+**Status:** Frontend and authenticated free-tier backend deployed. Screen discovery, JPEG upload, and a single-image playlist write/read-back have succeeded with the owner account. Actual television playback, phone-disconnected persistence, power-cycle recovery, and iPhone Safari behavior still require physical-device verification. GitHub Actions tests and deploys the public frontend. Server secrets never belong in frontend code.
 
 The old `artwork.csv` is retained only as historical repository content and is unused.

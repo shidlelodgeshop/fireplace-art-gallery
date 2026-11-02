@@ -29,6 +29,8 @@ Generated JPEG variants accumulate in AbleSign (a unique variant for each artwor
 
 ## Verification with your account and Fire Stick
 
+Verified November 2, 2026: authenticated screen discovery, native Safari controller sign-in, server-proxied museum image retrieval, one-time browser JPEG formatting, AbleSign upload, single-image playlist replacement, and playlist read-back. These succeeded using the owner account. Physical display, phone-disconnected playback, restart recovery, and iPhone-specific behavior remain pending.
+
 - Confirm `GET /api/screens`, a JPEG upload, and playlist write succeed using your existing free AbleSign account. Its official API guide specifies an API key and no separate paid prerequisite, but actual account entitlement remains unverified until these calls succeed.
 - The controller shows **playlist confirmed**, never **display confirmed**. Heartbeat is a connectivity report, not proof that the image is on the TV. There is no invented force-sync endpoint: AbleSign documents automatic downloads within a few minutes.
 - Test landscape and portrait paintings in Fit, then Fill; check all four edges and confirm no stretching. Try 30% and 100% brightness with the same TV backlight setting.
