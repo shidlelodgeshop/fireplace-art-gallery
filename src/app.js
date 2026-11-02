@@ -11,7 +11,7 @@ async function fallbackCatalog(q) {
   return catalog.artworks.filter(a => { const text = [a.title, a.artist, a.date, a.museum, ...(a.topics || [])].join(' ').toLowerCase(); return words.every(w => text.includes(w)); });
 }
 let favorites = read('fireplace-favorites', []), selected, page = 1, generation = 0, showingFavorites = false, results = [];
-let backend = read('fireplace-backend', ''), settings = read('fireplace-settings', { mode: 'fit', brightness: 70, background: '#000000' });
+let backend = read('fireplace-backend', 'https://fireplace-art-controller.fireplace-art-gallery.workers.dev'), settings = read('fireplace-settings', { mode: 'fit', brightness: 70, background: '#000000' });
 // workers.dev or a custom controller hostname is detected through an explicit /controller path.
 const controller = location.pathname.startsWith('/controller');
 let last = read('fireplace-last', null);
