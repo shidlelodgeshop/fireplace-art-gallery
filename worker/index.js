@@ -1,10 +1,23 @@
 import { authorized, sameOrigin } from './auth.js';
-import { detail, searchAll } from '../src/museums.js';
+import nga from '../nga.json' with { type: 'json' };
+import { setNGACatalog, detail, searchAll } from '../src/museums.js';
 import { options, jpegDimensions } from '../src/display.js';
 import { able, upload, playlistBody, ServiceError } from './ablesign.js';
+setNGACatalog(nga);
 const reply = (data, status = 200, extra = {}) => Response.json(data, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...extra } });
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    const publicURL = new URL(request.url);
+    if (publicURL.pathname === '/public/search' && request.method === 'GET') {
+      const q = (publicURL.searchParams.get('q') || '').slice(0,120);
+      const page = Math.min(100,Math.max(1,Number(publicURL.searchParams.get('page')) || 1));
+      const cacheKey = new Request(`${publicURL.origin}/public/search?${new URLSearchParams({q,page})}`);
+      const cached = await caches.default.match(cacheKey);
+      if (cached) return cached;
+      const response = reply(await searchAll(q,page),200,{'Access-Control-Allow-Origin':'https://shidlelodgeshop.github.io','Cache-Control':'public, max-age=900'});
+      ctx.waitUntil(caches.default.put(cacheKey,response.clone()));
+      return response;
+    }
     // Fail closed even if the Access edge application was accidentally removed.
     if (!await authorized(request, env)) return reply({ error: 'Sign in to your private art controller. If no login is offered, the server login secret has not been configured.' }, 401, env.CONTROLLER_PASSWORD ? { 'WWW-Authenticate': 'Basic realm="Fireplace Art Controller", charset="UTF-8"' } : {});
     const url = new URL(request.url);
@@ -48,7 +61,7 @@ export class TVController {
         let imageURL = artwork.image;
         if (artwork.source === 'met') imageURL = imageURL.replace('/original/', '/web-large/');
         const imageHost = new URL(imageURL);
-        if (imageHost.protocol !== 'https:' || !['images.metmuseum.org', 'www.artic.edu', 'openaccess-cdn.clevelandart.org'].includes(imageHost.hostname)) throw new ServiceError('Museum returned an unsupported image host.');
+        if (imageHost.protocol !== 'https:' || !['images.metmuseum.org', 'www.artic.edu', 'openaccess-cdn.clevelandart.org', 'api.nga.gov'].includes(imageHost.hostname)) throw new ServiceError('Museum returned an unsupported image host.');
         let r;
         try { r = await fetch(imageURL, { redirect: 'manual', headers: { 'User-Agent': 'FireplaceArtGallery/1.0 (personal museum art display)', Accept: 'image/jpeg,image/*;q=0.9' }, signal: AbortSignal.timeout(20000) }); }
         catch { throw new ServiceError('Museum image connection failed. Try another painting.'); }
@@ -80,7 +93,7 @@ export class TVController {
           if (!(suppliedImage instanceof File) || suppliedImage.size > 2000000 || suppliedImage.type !== 'image/jpeg') throw new Error();
         } else input = await request.json();
         options(input);
-        if (!['met', 'artic', 'cleveland'].includes(input.source) || !/^[0-9]{1,12}$/.test(String(input.id))) throw new Error();
+        if (!['met', 'artic', 'cleveland', 'nga'].includes(input.source) || !/^[0-9]{1,12}$/.test(String(input.id))) throw new Error();
       } catch { return reply({ error: 'Invalid artwork, JPEG or display settings.' }, 400); }
       const settings = options(input);
       const fingerprint = `${input.source}-${input.id}-${settings.mode}-${settings.brightness}-${settings.background}`;
