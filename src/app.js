@@ -1,3 +1,4 @@
+import { prepareJPEG } from './format.js';
 import { searchAll, detail, normalizeQuery } from './museums.js';
 const $ = id => document.getElementById(id);
 const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
@@ -57,7 +58,7 @@ function updatePreview() {
 }
 function preview(a) {
   selected = a; last = a; write('fireplace-last', a);
-  $('preview-image').src = a.image; $('preview-image').alt = a.title;
+  $('preview-image').src = controller ? `/api/image?source=${a.source}&id=${a.id}` : a.image; $('preview-image').alt = a.title;
   $('preview-image').onerror = () => {
     if ($('preview-image').src !== a.thumbnail) { $('preview-image').src = a.thumbnail; say('display-message', 'Full-size preview unavailable; showing the museum thumbnail. The controller retrieves the TV image separately.'); }
     else say('display-message', 'The museum image could not be loaded. Try another painting.');
@@ -70,7 +71,7 @@ function preview(a) {
 function saveLabel() { say('save', favorites.some(a => key(a) === key(selected)) ? '♥ Saved' : '♡ Save'); }
 async function api(path, body) {
   let r;
-  try { r = await fetch(path, { method: body ? 'POST' : 'GET', headers: body ? { 'Content-Type': 'application/json' } : {}, body: body ? JSON.stringify(body) : undefined, signal: AbortSignal.timeout(body ? 120000 : 20000) }); }
+  try { r = await fetch(path, { method: body ? 'POST' : 'GET', headers: body && !(body instanceof FormData) ? { 'Content-Type': 'application/json' } : {}, body: body instanceof FormData ? body : body ? JSON.stringify(body) : undefined, signal: AbortSignal.timeout(body ? 120000 : 20000) }); }
   catch { throw new Error('Connection interrupted. Check TV status before retrying; the last request may have been accepted.'); }
   if (!r.headers.get('content-type')?.includes('application/json')) throw new Error('Your sign-in may have expired. Reload the secure controller to sign in again.');
   const data = await r.json(); if (!r.ok) throw new Error(data.error || 'Controller unavailable.'); return data;
@@ -92,7 +93,13 @@ $('display').onclick = async () => {
     try { const u = backendURL(); u.search = new URLSearchParams({ source: selected.source, id: selected.id, ...settings }).toString(); location.href = u.href; } catch (e) { say('display-message', e.message); } return;
   }
   $('display').disabled = true; say('display-message', 'Preparing your painting and sending it to AbleSign…');
-  try { const data = await api('/api/display', { source: selected.source, id: selected.id, ...settings }); say('display-message', data.message); }
+  try {
+    const input = { source: selected.source, id: selected.id, ...settings };
+    const jpeg = await prepareJPEG(`/api/image?source=${selected.source}&id=${selected.id}`, settings);
+    const form = new FormData(); form.append('settings', JSON.stringify(input)); form.append('image', jpeg, 'painting.jpg');
+    say('display-message', 'Image prepared. Sending it to AbleSign… Keep this page open until confirmation.');
+    const data = await api('/api/display', form); say('display-message', data.message);
+  }
   catch (e) { say('display-message', e.message); }
   finally { $('display').disabled = false; }
 };
