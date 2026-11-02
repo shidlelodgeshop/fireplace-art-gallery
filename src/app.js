@@ -110,7 +110,7 @@ $('check-status').onclick = async () => {
 count();
 const hash = new URLSearchParams(location.search || location.hash.slice(1));
 if (controller && hash.has('source')) {
-  try { settings = { mode: hash.get('mode') === 'fill' ? 'fill' : 'fit', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await detail(hash.get('source'), hash.get('id')); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
+  try { settings = { mode: hash.get('mode') === 'fill' ? 'fill' : 'fit', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await api(`/api/artwork?${new URLSearchParams({ source: hash.get('source'), id: hash.get('id') })}`); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
 } else if (last) { preview(last); } else if (controller) {
   try { const state = await api('/api/status'); if (state.last?.artwork) preview(state.last.artwork); } catch (e) { say('message', e.message); }
 }
