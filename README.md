@@ -1,6 +1,6 @@
 # Fireplace Art Gallery
 
-A mobile museum art picker for a 1920 × 1080 television using AbleSign on Fire TV. Fit/fill, neutral surrounds, digital brightness, local favorites and last selection. No mirroring or continuous phone connection.
+A mobile museum art picker for a 1920 × 1080 television using AbleSign on Fire TV. Fit/fill, neutral surrounds, digital brightness, local favorites and last selection. The phone formats one JPEG, then AbleSign handles independent playback. No mirroring or continuous phone connection.
 
 - Public gallery: https://shidlelodgeshop.github.io/fireplace-art-gallery/
 - [Connect the private controller and test the TV](SETUP.md)

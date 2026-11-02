@@ -1,6 +1,6 @@
 # Connect the television
 
-The gallery runs on GitHub Pages. TV operations run on your authenticated Cloudflare Worker. The Fire Stick downloads the finished JPEG from AbleSign; the iPhone can be locked after submission. Neither application changes the Fire TV launcher.
+The gallery runs on GitHub Pages. TV operations run on your authenticated Cloudflare Worker. Your iPhone formats and submits one JPEG while the controller page is open. The Fire Stick then downloads the finished JPEG from AbleSign; the iPhone can be locked after submission. Neither application changes the Fire TV launcher.
 
 ## One-time setup
 
@@ -23,7 +23,7 @@ The authenticated controller also has the complete live museum search. GitHub Pa
 
 ## Cost and capacity
 
-GitHub Pages is appropriate for this public repository. Cloudflare offers free request/storage allowances, but **do not assume the image-rendering backend fits Workers Free's CPU allowance**. A local synthetic JPEG render measured about 100 ms, already above the documented 10 ms Free limit; real museum images can take longer. Workers Paid starts at $5/month (check current pricing before choosing it). No paid plan was enabled by this project. If staying entirely free is mandatory, do not subscribe: choose a Node hosting provider with a suitable free image-processing CPU allowance and port the backend before activation. The current implementation prioritizes server-side rendering and serial, durable TV changes over an unverified free claim.
+GitHub Pages is appropriate for this public repository. The backend targets Cloudflare Workers Free with SQLite-backed Durable Objects and Cloudflare Access's free allowance. Image rendering runs once in the phone's canvas, so the Worker does not decode or resize museum images and does not need an image-processing subscription. No paid service has been enabled. Keep the controller open until submission finishes; afterward the phone is unnecessary. Free service limits still apply and must be checked in the deployed account. The @cf-wasm/photon dependency is used only for local reference-rendering tests and is excluded from the production Worker bundle.
 
 Generated JPEG variants accumulate in AbleSign (a unique variant for each artwork/settings combination) and are reused. This avoids destructive cleanup of your library but eventually consumes storage. Delete old `fireplace-…` files through AbleSign during occasional maintenance. Cached records of deleted files currently need controller storage maintenance before that variant can be used again. No automatic deletion of existing account media is performed.
 
@@ -50,5 +50,6 @@ The workflow builds `dist`, runs automated tests and validates the Worker bundle
 - https://api.artic.edu/docs/ — public-domain filter, painting type and IIIF derivatives.
 - https://openaccess-api.clevelandart.org/ — CC0 image rights, search and image records.
 - https://developers.cloudflare.com/workers/platform/limits/ — CPU, memory and request limits.
-- https://developers.cloudflare.com/workers/platform/pricing/ — verify current cost before subscribing.
+- https://developers.cloudflare.com/workers/platform/pricing/ — free request allowance; no paid subscription selected.
+- https://developers.cloudflare.com/durable-objects/platform/pricing/ — SQLite-backed Durable Objects on Workers Free.
 - https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/ — JWT signature, issuer and audience validation.
