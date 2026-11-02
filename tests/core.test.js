@@ -57,3 +57,11 @@ test('backend refuses an unformatted image before changing playlist',async()=>{
  globalThis.fetch=async(u,o)=>{if(o?.method==='PUT')mutations++;if(u.endsWith('/playlist'))return response({items:[]});if(u.includes('/screens/'))return response({id:1,screenGroupId:null});if(u.includes('/artworks/'))return response({id:1,is_public_domain:true,image_id:'x',artwork_type_title:'Painting'});throw new Error('Unexpected fetch');};
  try{const c=new TVController({storage:{get:async k=>data.get(k),put:async(k,v)=>data.set(k,v)}},{ABLESIGN_API_KEY:'x',ABLESIGN_SCREEN_ID:'1'});const r=await c.fetch(new Request('https://a/api/display',{method:'POST',body:JSON.stringify({source:'artic',id:'1'})}));assert.equal(r.status,400);assert.equal(mutations,0);}finally{globalThis.fetch=real;}
 });
+test('native password login requires a strong configured secret and exact credentials',async()=>{
+ const password='0123456789abcdef0123456789ABCDEF';
+ const request=p=>new Request('https://a',{headers:{Authorization:'Basic '+btoa('fireplace:'+p)}});
+ assert.equal(await authorized(request(password),{CONTROLLER_PASSWORD:password}),true);
+ assert.equal(await authorized(request(password+'wrong'),{CONTROLLER_PASSWORD:password}),false);
+ assert.equal(await authorized(request('short'),{CONTROLLER_PASSWORD:'short'}),false);
+ assert.equal(await authorized(new Request('https://a'),{CONTROLLER_PASSWORD:password}),false);
+});
