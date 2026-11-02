@@ -42,13 +42,18 @@ export class TVController {
       }
       if (path === '/api/image' && request.method === 'GET') {
         const query = new URL(request.url).searchParams;
-        const artwork = await detail(query.get('source'), query.get('id'));
+        let artwork;
+        try { artwork = await detail(query.get('source'), query.get('id')); }
+        catch { throw new ServiceError('Museum artwork details are temporarily unavailable. Try another painting.'); }
         let imageURL = artwork.image;
         if (artwork.source === 'met') imageURL = imageURL.replace('/original/', '/web-large/');
         const imageHost = new URL(imageURL);
         if (imageHost.protocol !== 'https:' || !['images.metmuseum.org', 'www.artic.edu', 'openaccess-cdn.clevelandart.org'].includes(imageHost.hostname)) throw new ServiceError('Museum returned an unsupported image host.');
-        const r = await fetch(imageURL, { redirect: 'error', signal: AbortSignal.timeout(20000) });
-        if (!r.ok || Number(r.headers.get('content-length')) > 12000000) throw new ServiceError('Museum image is unavailable or too large.');
+        let r;
+        try { r = await fetch(imageURL, { redirect: 'manual', headers: { 'User-Agent': 'FireplaceArtGallery/1.0 (personal museum art display)', Accept: 'image/jpeg,image/*;q=0.9' }, signal: AbortSignal.timeout(20000) }); }
+        catch { throw new ServiceError('Museum image connection failed. Try another painting.'); }
+        if (!r.ok) throw new ServiceError(`Museum image is unavailable (HTTP ${r.status}). Try another painting.`);
+        if (Number(r.headers.get('content-length')) > 12000000) throw new ServiceError('Museum image is too large.');
         return new Response(r.body, { headers: { 'Content-Type': 'image/jpeg', 'Cache-Control': 'private, max-age=3600', 'X-Content-Type-Options': 'nosniff' } });
       }
       if (!/^[0-9]+$/.test(env.ABLESIGN_SCREEN_ID || '')) return reply({ error: 'Select your Fire Stick screen during backend setup.' }, 503);
