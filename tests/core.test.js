@@ -65,3 +65,8 @@ test('native password login requires a strong configured secret and exact creden
  assert.equal(await authorized(request('short'),{CONTROLLER_PASSWORD:'short'}),false);
  assert.equal(await authorized(new Request('https://a'),{CONTROLLER_PASSWORD:password}),false);
 });
+test('controller resolves selected artwork on the server, avoiding museum browser CORS',async()=>{
+ const real=globalThis.fetch,password='0123456789abcdef0123456789ABCDEF';
+ globalThis.fetch=async()=>response({id:16568,title:'Water Lilies',is_public_domain:true,image_id:'test',artwork_type_title:'Painting'});
+ try{const r=await worker.fetch(new Request('https://a/api/artwork?source=artic&id=16568',{headers:{Authorization:'Basic '+btoa('fireplace:'+password)}}),{CONTROLLER_PASSWORD:password});assert.equal(r.status,200);assert.equal((await r.json()).title,'Water Lilies');}finally{globalThis.fetch=real;}
+});
