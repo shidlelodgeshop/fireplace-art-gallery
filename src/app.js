@@ -45,7 +45,7 @@ async function search(append = false) {
       const fallback = await fallbackCatalog(q);
       const seen = new Set(data.artworks.map(key));
       data.artworks.push(...fallback.filter(a => !seen.has(key(a))));
-      data.warnings = ['Some museums could not be searched live in this browser. Results include a saved starter collection. Open your secure controller for full live search.'];
+      data.warnings = ['Some museum services are temporarily unavailable. Results also include paintings from the saved collection.'];
     }
     if (run !== generation) return;
     const known = new Set(results.map(key)); results.push(...data.artworks.filter(a => !known.has(key(a)) && (!a.width || screenSuitable(a)))); render();
@@ -115,7 +115,7 @@ count();
 const hash = new URLSearchParams(location.search || location.hash.slice(1));
 if (controller && hash.has('source')) {
   try { settings = { mode: 'fill', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await api(`/api/artwork?${new URLSearchParams({ source: hash.get('source'), id: hash.get('id') })}`); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
-} else if (last) { preview(last); } else if (controller) {
+} else if (last && screenSuitable(last)) { preview(last); } else if (controller) {
   try { const state = await api('/api/status'); if (state.last?.artwork) preview(state.last.artwork); } catch (e) { say('message', e.message); }
 }
 search();
