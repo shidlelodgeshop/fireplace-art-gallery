@@ -1,6 +1,6 @@
 import { authorized, sameOrigin } from './auth.js';
 import { detail, searchAll } from '../src/museums.js';
-import { options, format } from './image.js';
+import { options, jpegDimensions } from '../src/display.js';
 import { able, upload, playlistBody, ServiceError } from './ablesign.js';
 const reply = (data, status = 200, extra = {}) => Response.json(data, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...extra } });
 export default {
@@ -39,6 +39,17 @@ export class TVController {
         }
         return reply({ screens, configuredScreen: env.ABLESIGN_SCREEN_ID || null });
       }
+      if (path === '/api/image' && request.method === 'GET') {
+        const query = new URL(request.url).searchParams;
+        const artwork = await detail(query.get('source'), query.get('id'));
+        let imageURL = artwork.image;
+        if (artwork.source === 'met') imageURL = imageURL.replace('/original/', '/web-large/');
+        const imageHost = new URL(imageURL);
+        if (imageHost.protocol !== 'https:' || !['images.metmuseum.org', 'www.artic.edu', 'openaccess-cdn.clevelandart.org'].includes(imageHost.hostname)) throw new ServiceError('Museum returned an unsupported image host.');
+        const r = await fetch(imageURL, { redirect: 'error', signal: AbortSignal.timeout(20000) });
+        if (!r.ok || Number(r.headers.get('content-length')) > 12000000) throw new ServiceError('Museum image is unavailable or too large.');
+        return new Response(r.body, { headers: { 'Content-Type': 'image/jpeg', 'Cache-Control': 'private, max-age=3600', 'X-Content-Type-Options': 'nosniff' } });
+      }
       if (!/^[0-9]+$/.test(env.ABLESIGN_SCREEN_ID || '')) return reply({ error: 'Select your Fire Stick screen during backend setup.' }, 503);
       const target = `/screens/${env.ABLESIGN_SCREEN_ID}`;
       if (path === '/api/status' && request.method === 'GET') {
@@ -53,11 +64,18 @@ export class TVController {
         return reply(result);
       }
       if (path !== '/api/display' || request.method !== 'POST') return reply({ error: 'Not found.' }, 404);
-      const text = await request.text();
-      if (text.length > 2048) return reply({ error: 'Request too large.' }, 413);
-      let input;
-      try { input = JSON.parse(text); options(input); if (!['met', 'artic', 'cleveland'].includes(input.source) || !/^[0-9]{1,12}$/.test(String(input.id))) throw new Error(); }
-      catch { return reply({ error: 'Invalid artwork or display settings.' }, 400); }
+      if (Number(request.headers.get('content-length')) > 2200000) return reply({ error: 'Image request is too large.' }, 413);
+      let input, suppliedImage;
+      try {
+        if (request.headers.get('content-type')?.startsWith('multipart/form-data')) {
+          const form = await request.formData();
+          input = JSON.parse(form.get('settings'));
+          suppliedImage = form.get('image');
+          if (!(suppliedImage instanceof File) || suppliedImage.size > 2000000 || suppliedImage.type !== 'image/jpeg') throw new Error();
+        } else input = await request.json();
+        options(input);
+        if (!['met', 'artic', 'cleveland'].includes(input.source) || !/^[0-9]{1,12}$/.test(String(input.id))) throw new Error();
+      } catch { return reply({ error: 'Invalid artwork, JPEG or display settings.' }, 400); }
       const settings = options(input);
       const fingerprint = `${input.source}-${input.id}-${settings.mode}-${settings.brightness}-${settings.background}`;
       const last = await store.get('last');
@@ -75,19 +93,10 @@ export class TVController {
       if (mediaId) {
         try { await able(env, `/media_files/${mediaId}`); } catch (e) { throw new ServiceError('Cached artwork could not be checked. Try later; if you deleted it in AbleSign, clear the controller cache during maintenance.'); }
       } else {
-        let imageURL = artwork.image;
-        // Use museum-controlled, reasonably sized derivatives where supported.
-        if (artwork.source === 'met') imageURL = imageURL.replace('/original/', '/web-large/');
-        const imageHost = new URL(imageURL);
-        const allowed = ['images.metmuseum.org', 'www.artic.edu', 'openaccess-cdn.clevelandart.org'];
-        if (imageHost.protocol !== 'https:' || !allowed.includes(imageHost.hostname)) throw new ServiceError('Museum returned an unsupported image host.');
-        const r = await fetch(imageURL, { redirect: 'error', signal: AbortSignal.timeout(20000) });
-        if (!r.ok) throw new ServiceError('Museum image is unavailable. Choose another painting or try later.');
-        if (Number(r.headers.get('content-length')) > 12000000) throw new ServiceError('Museum image is too large to process safely.');
-        const reader = r.body.getReader(); const chunks = []; let length = 0;
-        while (true) { const { done, value } = await reader.read(); if (done) break; length += value.length; if (length > 12000000) { await reader.cancel(); throw new ServiceError('Museum image is too large.'); } chunks.push(value); }
-        const bytes = new Uint8Array(length); let offset = 0; for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
-        const jpeg = format(bytes, settings);
+        if (!suppliedImage) return reply({ error: 'The controller must prepare the TV image before submitting it.' }, 400);
+        const jpeg = new Uint8Array(await suppliedImage.arrayBuffer());
+        const dimensions = jpegDimensions(jpeg);
+        if (dimensions.width !== 1920 || dimensions.height !== 1080) return reply({ error: 'The TV image must be a 1920 × 1080 JPEG.' }, 400);
         const media = await upload(env, jpeg, `fireplace-${fingerprint.replace('#', '')}.jpg`);
         mediaId = media.id;
         // Persist before playlist mutation so timeout/retry cannot duplicate uploads.

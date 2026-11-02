@@ -12,5 +12,5 @@ export async function authorized(request, env, verify = jwtVerify) {
   } catch { return false; }
 }
 export function sameOrigin(request) {
-  return request.headers.get('Origin') === new URL(request.url).origin && request.headers.get('Content-Type')?.startsWith('application/json');
+  return request.headers.get('Origin') === new URL(request.url).origin && (/^(application\/json|multipart\/form-data)(;|$)/.test(request.headers.get('Content-Type') || ''));
 }
