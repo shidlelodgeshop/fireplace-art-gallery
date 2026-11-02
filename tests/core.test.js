@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PhotonImage } from '@cf-wasm/photon';
-import { normalize, normalizeQuery, searchAll, detail } from '../src/museums.js';
+import { normalize, normalizeQuery, screenSuitable, searchAll, detail } from '../src/museums.js';
 import { geometry, options, format, jpegDimensions } from '../worker/image.js';
 import { authorized, sameOrigin } from '../worker/auth.js';
 import { able, upload, playlistBody } from '../worker/ablesign.js';
@@ -16,7 +16,7 @@ test('normalizers reject copyrighted artwork, nonpaintings, and absent images', 
 });
 test('one failing museum does not suppress other results', async()=>{
   const fetcher=async u=> { if(u.includes('metmuseum')) throw new Error('Offline'); if(u.includes('artic')) return response([{id:1,is_public_domain:true,image_id:'x',artwork_type_title:'Painting'}]); return response([]); };
-  const r=await searchAll('Monet',1,fetcher);assert.equal(r.artworks.length,1);assert.equal(r.warnings.length,1);
+  const r=await searchAll('Monet',1,fetcher);assert.equal(r.artworks.filter(a=>a.source==='artic').length,1);assert.ok(r.artworks.some(a=>a.source==='nga'));assert.equal(r.warnings.length,1);
 });
 test('artwork detail rejects path injection and unknown museums',async()=>{await assert.rejects(detail('met','../secret'));await assert.rejects(detail('other','1'));});
 test('fit preserves composition and fill preserves proportions',()=>{assert.deepEqual(geometry(1000,1000,'fit'),{width:1080,height:1080});assert.deepEqual(geometry(1000,1000,'fill'),{width:1920,height:1920});assert.deepEqual(geometry(2000,1000,'fit'),{width:1920,height:960});});
@@ -47,7 +47,7 @@ test('three-step upload never sends credential to storage',async()=>{
 });
 test('playlist has only one artwork, no shuffle or transitions',()=>{const p=playlistBody(12);assert.equal(p.items.length,1);assert.equal(p.items[0].mediafileId,12);assert.equal(p.shufflePlay,false);assert.equal(p.enableImageTransitions,false);});
 test('identical selection rechecks remote playlist without reupload',async()=>{
- const real=globalThis.fetch;const data=new Map([['last',{fingerprint:'artic-1-fit-70-#000000',mediaId:9}]]);let calls=0;
+ const real=globalThis.fetch;const data=new Map([['last',{fingerprint:'artic-1-fill-70-#000000',mediaId:9}]]);let calls=0;
  globalThis.fetch=async()=>{calls++;return response({items:[{mediafileId:9}]});};
  try{const c=new TVController({storage:{get:async k=>data.get(k)}},{ABLESIGN_API_KEY:'x',ABLESIGN_SCREEN_ID:'1'});const r=await c.fetch(new Request('https://a/api/display',{method:'POST',body:JSON.stringify({source:'artic',id:'1'})}));assert.equal(r.status,200);assert.equal(calls,1);}finally{globalThis.fetch=real;}
 });
@@ -70,3 +70,5 @@ test('controller resolves selected artwork on the server, avoiding museum browse
  globalThis.fetch=async()=>response({id:16568,title:'Water Lilies',is_public_domain:true,image_id:'test',artwork_type_title:'Painting'});
  try{const r=await worker.fetch(new Request('https://a/api/artwork?source=artic&id=16568',{headers:{Authorization:'Basic '+btoa('fireplace:'+password)}}),{CONTROLLER_PASSWORD:password});assert.equal(r.status,200);assert.equal((await r.json()).title,'Water Lilies');}finally{globalThis.fetch=real;}
 });
+
+test("screen selection rejects portrait, square and extreme panoramas",()=>{for(const [width,height] of [[1000,2000],[1000,1000],[4000,1000]]) assert.equal(screenSuitable({width,height}),false);assert.equal(screenSuitable({width:1920,height:1080}),true);});
