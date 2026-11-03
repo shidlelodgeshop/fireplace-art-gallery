@@ -11,9 +11,12 @@ async function fallbackCatalog(q) {
   return catalog.artworks.filter(a => { const text = [a.title, a.artist, a.date, a.museum, ...(a.topics || [])].join(' ').toLowerCase(); return words.every(w => text.includes(w)); });
 }
 let favorites = read('fireplace-favorites', []), selected, page = 1, generation = 0, showingFavorites = false, results = [];
-let backend = read('fireplace-backend', 'https://fireplace-art-controller.fireplace-art-gallery.workers.dev'), settings = read('fireplace-settings', { mode: 'fill', brightness: 70, background: '#000000' });
-// Migrate old fit preferences to edge-to-edge presentation.
-settings.mode = 'fill';
+let backend = read('fireplace-backend', 'https://fireplace-art-controller.fireplace-art-gallery.workers.dev'), settings = read('fireplace-settings', { mode: 'fit', brightness: 70, background: '#77716a' });
+// Switch existing devices once to the complete-painting presentation.
+if (!read('fireplace-mat-presentation', false)) {
+  settings.mode = 'fit'; settings.background = '#77716a';
+  write('fireplace-settings', settings); write('fireplace-mat-presentation', true);
+}
 // workers.dev or a custom controller hostname is detected through an explicit /controller path.
 const controller = location.pathname.startsWith('/controller');
 let last = read('fireplace-last', null);
@@ -49,12 +52,12 @@ async function search(append = false) {
     }
     if (run !== generation) return;
     const known = new Set(results.map(key)); results.push(...data.artworks.filter(a => !known.has(key(a)) && (!a.width || screenSuitable(a)))); render();
-    say('message', `${results.length} candidates · only widescreen paintings are shown after image checks${data.artworks.length ? '' : ' · No more eligible paintings on this page. Try another search.'}${data.warnings.length ? '\n' + data.warnings.join('\n') : ''}`);
+    say('message', `${results.length} candidates · paintings of every orientation, checked for valid images${data.artworks.length ? '' : ' · No more eligible paintings on this page. Try another search.'}${data.warnings.length ? '\n' + data.warnings.join('\n') : ''}`);
     $('more').hidden = data.artworks.length === 0 && data.warnings.length === 0;
   } catch (e) { if (run === generation) say('message', e.message); }
 }
 function updatePreview() {
-  settings = { mode: 'fill', background: $('background').value, brightness: Number($('brightness').value) };
+  settings = { mode: $('mode').value, background: $('background').value, brightness: Number($('brightness').value) };
   $('preview-image').style.objectFit = settings.mode === 'fill' ? 'cover' : 'contain';
   $('preview-image').style.filter = `brightness(${settings.brightness}%)`;
   document.querySelector('.tv-frame').style.background = settings.background;
@@ -114,7 +117,7 @@ $('check-status').onclick = async () => {
 count();
 const hash = new URLSearchParams(location.search || location.hash.slice(1));
 if (controller && hash.has('source')) {
-  try { settings = { mode: 'fill', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await api(`/api/artwork?${new URLSearchParams({ source: hash.get('source'), id: hash.get('id') })}`); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
+  try { settings = { mode: hash.get('mode') === 'fill' ? 'fill' : 'fit', brightness: Math.min(100, Math.max(10, Number(hash.get('brightness')) || 70)), background: ['#000000', '#24211e', '#77716a'].includes(hash.get('background')) ? hash.get('background') : '#000000' }; const a = await api(`/api/artwork?${new URLSearchParams({ source: hash.get('source'), id: hash.get('id') })}`); preview(a); say('display-message', 'Signed in to your controller. Tap Display on TV to submit this painting.'); } catch (e) { say('message', e.message); }
 } else if (last && screenSuitable(last)) { preview(last); } else if (controller) {
   try { const state = await api('/api/status'); if (state.last?.artwork) preview(state.last.artwork); } catch (e) { say('message', e.message); }
 }

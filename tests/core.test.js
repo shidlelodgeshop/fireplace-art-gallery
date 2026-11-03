@@ -47,7 +47,7 @@ test('three-step upload never sends credential to storage',async()=>{
 });
 test('playlist has only one artwork, no shuffle or transitions',()=>{const p=playlistBody(12);assert.equal(p.items.length,1);assert.equal(p.items[0].mediafileId,12);assert.equal(p.shufflePlay,false);assert.equal(p.enableImageTransitions,false);});
 test('identical selection rechecks remote playlist without reupload',async()=>{
- const real=globalThis.fetch;const data=new Map([['last',{fingerprint:'artic-1-fill-70-#000000',mediaId:9}]]);let calls=0;
+ const real=globalThis.fetch;const data=new Map([['last',{fingerprint:'artic-1-fit-70-#77716a',mediaId:9}]]);let calls=0;
  globalThis.fetch=async()=>{calls++;return response({items:[{mediafileId:9}]});};
  try{const c=new TVController({storage:{get:async k=>data.get(k)}},{ABLESIGN_API_KEY:'x',ABLESIGN_SCREEN_ID:'1'});const r=await c.fetch(new Request('https://a/api/display',{method:'POST',body:JSON.stringify({source:'artic',id:'1'})}));assert.equal(r.status,200);assert.equal(calls,1);}finally{globalThis.fetch=real;}
 });
@@ -71,4 +71,6 @@ test('controller resolves selected artwork on the server, avoiding museum browse
  try{const r=await worker.fetch(new Request('https://a/api/artwork?source=artic&id=16568',{headers:{Authorization:'Basic '+btoa('fireplace:'+password)}}),{CONTROLLER_PASSWORD:password});assert.equal(r.status,200);assert.equal((await r.json()).title,'Water Lilies');}finally{globalThis.fetch=real;}
 });
 
-test("screen selection rejects portrait, square and extreme panoramas",()=>{for(const [width,height] of [[1000,2000],[1000,1000],[4000,1000]]) assert.equal(screenSuitable({width,height}),false);assert.equal(screenSuitable({width:1920,height:1080}),true);});
+test("mat presentation accepts all orientations and rejects invalid dimensions",()=>{for(const [width,height] of [[1000,2000],[1000,1000],[4000,1000]]) assert.equal(screenSuitable({width,height}),true);for(const [width,height] of [[0,1000],[-1,1000],[Infinity,1000],[1000,NaN]]) assert.equal(screenSuitable({width,height}),false);assert.equal(screenSuitable({width:1920,height:1080}),true);});
+
+test('whole painting and stone mat are the default',()=>{assert.deepEqual(options({}),{mode:'fit',brightness:70,background:'#77716a'});assert.deepEqual(geometry(1000,2000,'fit'),{width:540,height:1080});assert.deepEqual(geometry(1920,1080,'fit'),{width:1920,height:1080});});

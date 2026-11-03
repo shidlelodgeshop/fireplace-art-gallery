@@ -2,7 +2,7 @@ export const museums = { met: 'The Metropolitan Museum of Art', artic: 'Art Inst
 let ngaPaintings;
 export function setNGACatalog(data) { ngaPaintings = data.artworks; }
 async function ngaCatalog() { if (!ngaPaintings) ngaPaintings = (await json(new URL('../nga.json', import.meta.url))).artworks; return ngaPaintings; }
-export function screenSuitable(a) { const ratio = Number(a.width) / Number(a.height); return Number.isFinite(ratio) && ratio >= 1.34 && ratio <= 2.37; }
+export function screenSuitable(a) { return Number.isFinite(Number(a.width)) && Number.isFinite(Number(a.height)) && Number(a.width) > 0 && Number(a.height) > 0; }
 export const normalizeQuery = q => String(q ?? '').normalize('NFKC').trim().replace(/\s+/g, ' ').slice(0, 120);
 export async function json(url, fetcher = fetch) {
   const r = await fetcher(url, { signal: AbortSignal.timeout(15000), headers: { 'AIC-User-Agent': 'FireplaceArtGallery (https://github.com/shidlelodgeshop/fireplace-art-gallery)' } });

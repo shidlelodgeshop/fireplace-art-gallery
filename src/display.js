@@ -1,5 +1,5 @@
 export function options(input) {
-  const mode = input.mode ?? 'fill', brightness = input.brightness ?? 70, background = input.background ?? '#000000';
+  const mode = input.mode ?? 'fit', brightness = input.brightness ?? 70, background = input.background ?? '#77716a';
   if (!['fit', 'fill'].includes(mode) || !Number.isInteger(brightness) || brightness < 10 || brightness > 100 || !['#000000', '#24211e', '#77716a'].includes(background)) throw new Error('Invalid display settings.');
   return { mode, brightness, background };
 }
