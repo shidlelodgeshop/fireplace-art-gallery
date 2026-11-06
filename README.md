@@ -1,16 +1,22 @@
 # Fireplace Art Gallery
 
-A mobile museum art picker for a 1920 × 1080 television using AbleSign on Fire TV. Fit/fill, neutral surrounds, digital brightness, local favorites and last selection. The phone formats one JPEG, then AbleSign handles independent playback. No mirroring or continuous phone connection.
+A museum art picker for a 1920 × 1080 television. Search the Metropolitan Museum of Art, Art Institute of Chicago, Cleveland Museum of Art and National Gallery of Art; save favorites and send a painting to the paired TV.
 
-- Public gallery: https://shidlelodgeshop.github.io/fireplace-art-gallery/
-- [Connect the private controller and test the TV](SETUP.md)
-- `npm ci && npm test && npm run build`
-- `npm run dev` starts the Cloudflare emulator. Missing identity settings intentionally produce HTTP 401. For public gallery preview: `python3 -m http.server 4173 --directory dist`.
-- `node scripts/catalog.mjs` refreshes the explicitly labelled fallback starter collection from official museum APIs. This is not the complete museum catalog.
+- Gallery: https://shidlelodgeshop.github.io/fireplace-art-gallery/
+- [Controller setup](SETUP.md)
+- Check and build: `npm ci && npm test && npm run build`
+- Local backend: `npm run dev`. Missing authentication settings intentionally return HTTP 401.
 
-**Status:** Frontend and authenticated free-tier backend deployed. Screen discovery, JPEG upload, and a single-image playlist write/read-back have succeeded with the owner account. Actual television playback, phone-disconnected persistence, power-cycle recovery, and iPhone Safari behavior still require physical-device verification. GitHub Actions tests and deploys the public frontend. Server secrets never belong in frontend code.
+The phone prepares one JPEG for AbleSign. It does not need to mirror the screen or remain connected after submission. Whole-painting framing with a neutral Stone mat is the default; full-screen cropping is optional. Valid portrait and square paintings can use a mat without distortion. Art brightness changes image pixels, rather than the television's backlight. The bundled NGA catalog contains 604 landscape paintings; museum searches provide additional works. Museum attribution and source links remain visible.
 
-The old `artwork.csv` is retained only as historical repository content and is unused.
+## Optional Fire TV companion
 
-## Widescreen collection update
-The gallery now includes 604 open-access landscape-format paintings indexed from the National Gallery of Art official open data (https://github.com/NationalGalleryOfArt/opendata), filtered using primary-image dimensions and openaccess=1. Museum-provided metadata and images remain credited and linked. Search Wide paintings to browse this collection. Public searches use the cached, read-only /public/search backend route, avoiding museum browser CORS failures; TV controls remain authenticated. Fill screen is the default and only offered composition mode; images outside 1.34–2.37 width/height are removed and rejected during JPEG preparation. Up to about 25% of a suitable painting may be cropped, preserving proportions. Borders already photographed into museum images may require individual curation.
+The personal TV companion can read the last confirmed selection through `GET /device/state` using a separately provisioned `TV_VIEW_TOKEN` bearer credential. The endpoint returns only artwork metadata, presentation settings and submission time. It cannot upload, select a different painting, inspect AbleSign credentials or authorize any `/api/*` controller operation. The controller password and AbleSign key remain server secrets.
+
+The companion retrieves the original museum image from an allowlist of HTTPS image hosts, caches it privately on the TV, and renders its own Art brightness, mat and fit/fill settings. A new phone submission supplies fresh presentation defaults. The TV's local adjustments apply only to the companion; the AbleSign playlist remains the original fallback. Pairing credentials are not embedded in the APK or source archive.
+
+The TV connection refreshes at most once a minute while Art is open, and on Home entry subject to the same throttle. Cached Art survives network outages. No image rendering runs in the Worker for this connection. Existing authenticated phone controls and the public gallery keep their original routes.
+
+For production updates, use `npm run build` then `npx wrangler deploy --keep-vars` to preserve dashboard variables. Provision `TV_VIEW_TOKEN` through Wrangler's secret input; never commit its value. Rotating it requires updating the paired TV's private credential as well.
+
+GitHub Actions tests and publishes the public frontend. Worker deployment is separate. The old `artwork.csv` is retained as historical content and is unused.

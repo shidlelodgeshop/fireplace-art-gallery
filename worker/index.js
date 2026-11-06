@@ -1,4 +1,4 @@
-import { authorized, sameOrigin } from './auth.js';
+import { authorized, sameOrigin, deviceAuthorized } from './auth.js';
 import nga from '../nga.json' with { type: 'json' };
 import { setNGACatalog, detail, searchAll } from '../src/museums.js';
 import { options, jpegDimensions } from '../src/display.js';
@@ -8,7 +8,14 @@ const reply = (data, status = 200, extra = {}) => Response.json(data, { status, 
 export default {
   async fetch(request, env, ctx) {
     const publicURL = new URL(request.url);
-    if (publicURL.pathname === '/public/search' && request.method === 'GET') {
+    if (publicURL.pathname.startsWith('/device/')) {
+      if (publicURL.pathname !== '/device/state') return reply({error:'Not found.'},404);
+      if (request.method !== 'GET') return reply({error:'Read-only endpoint.'},405);
+      if (!await deviceAuthorized(request,env)) return reply({error:'TV pairing required.'},401);
+      try { return await env.TV.get(env.TV.idFromName('fireplace')).fetch(request); }
+      catch { return reply({error:'Painting connection unavailable.'},503); }
+    }
+    if (publicURL.pathname === '/public/search'  && request.method === 'GET') {
       const q = (publicURL.searchParams.get('q') || '').slice(0,120);
       const page = Math.min(100,Math.max(1,Number(publicURL.searchParams.get('page')) || 1));
       const cacheKey = new Request(`${publicURL.origin}/public/search?${new URLSearchParams({q,page})}`);
@@ -42,6 +49,7 @@ export class TVController {
   }
   async handle(request) {
     const env = this.env, store = this.ctx.storage, path = new URL(request.url).pathname;
+    if (path === '/device/state' && request.method === 'GET') return reply(deviceState(await store.get('last')));
     if (!env.ABLESIGN_API_KEY) return reply({ error: 'AbleSign server secret has not been configured.' }, 503);
     try {
       if (path === '/api/screens' && request.method === 'GET') {
@@ -135,4 +143,10 @@ export class TVController {
       return reply({ error: e instanceof ServiceError ? e.message : 'Unable to prepare this painting. Try another artwork or check status before retrying.' }, e.status || 502, e.retryAfter ? { 'Retry-After': e.retryAfter } : {});
     }
   }
+}
+
+export function deviceState(last) {
+  if (!last?.artwork) return {artwork:null,settings:null,submittedAt:null};
+  const a=last.artwork;
+  return {artwork:{source:a.source,id:a.id,title:a.title,artist:a.artist,image:a.image,thumbnail:a.thumbnail,width:a.width,height:a.height},settings:last.settings,submittedAt:last.submittedAt};
 }
