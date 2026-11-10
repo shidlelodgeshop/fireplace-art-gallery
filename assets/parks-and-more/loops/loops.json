@@ -128,6 +128,26 @@
         87,
         8
       ]
+    },
+    "animal-intro": {
+      "frames": 411,
+      "fps": 30,
+      "width": 1920,
+      "height": 1080,
+      "seconds": 13.7,
+      "audio": false,
+      "crossfade": false,
+      "repeats": false,
+      "onCompletion": "continue animal ambient loop",
+      "birdSourceWindowSeconds": [
+        129.3,
+        13.7
+      ],
+      "birdVerticalOffsetPixels": -140,
+      "sourceWindowSeconds": [
+        29.1,
+        13.7
+      ]
     }
   }
 }

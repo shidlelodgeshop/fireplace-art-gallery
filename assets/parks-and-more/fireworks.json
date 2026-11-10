@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "show": "Happily Ever After",
+  "scheduleSource": "ThemeParks.wiki Magic Kingdom live showtimes and operating hours",
+  "foregroundScreens": [
+    "saratoga",
+    "parks-and-more"
+  ],
+  "videoUrl": "https://www.youtube.com/watch?v=ypp4iuJUW2I",
+  "nativeAsset": "fireworks/happily-ever-after.mp4",
+  "nativePlayback": "cached 720p H.264 with AAC audio; actual completion returns to Saratoga",
+  "publicRepositoryRecording": false,
+  "triggerGraceSeconds": 90,
+  "requiresOpenPark": true,
+  "requiresFreshSchedule": true,
+  "oncePerPostedShowStart": true,
+  "backgroundInterruptions": false,
+  "returnTo": "saratoga"
+}

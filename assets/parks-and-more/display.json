@@ -37,7 +37,8 @@
       "epcot",
       "magic"
     ],
-    "oncePer": "scene visit"
+    "oncePer": "scene visit",
+    "animalBirds": "once per scene visit, followed by continuous tree breeze"
   },
   "entertainment": {
     "refreshSeconds": 60,
@@ -49,5 +50,8 @@
     "retainCompletedShowsToday": true,
     "completedMessage": "No more shows for today",
     "textColor": "white"
-  }
+  },
+  "closedWaitMessage": "No Active Wait Times",
+  "closedWaitDetail": "All listed attractions are currently unavailable",
+  "scheduledFireworks": "fireworks.json"
 }
