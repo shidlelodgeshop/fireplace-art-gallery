@@ -28,7 +28,11 @@
   "showSidebarFooter": false,
   "animation": {
     "transition": "cut",
-    "source": "awaiting supplied park animation"
+    "source": "loops/loops.json",
+    "format": "silent H.264 720p24",
+    "crossfade": false,
+    "fallback": "existing still backgrounds",
+    "waterparks": "captured for reuse; not in current page rotation"
   },
   "entertainment": {
     "refreshSeconds": 60,

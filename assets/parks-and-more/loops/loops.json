@@ -1,0 +1,117 @@
+{
+  "source": "https://www.youtube.com/watch?v=ccdWVfCuATo",
+  "sourceTitle": "WDW Today Channel - January 2026 - New Music!! | Walt Disney World Resort TV",
+  "format": "H.264 Main Level 3.1, 1280x720, 24 fps, silent MP4",
+  "processing": "Recorded text and sidebar replaced with clean sky and sidebar; matched endpoints; no crossfade.",
+  "active": [
+    "epcot",
+    "hollywood",
+    "animal",
+    "magic",
+    "springs",
+    "waits"
+  ],
+  "additionalCaptured": [
+    "waterparks"
+  ],
+  "clips": {
+    "magic": {
+      "frames": 121,
+      "seconds": 5.041666666666667,
+      "startFrame": 47,
+      "endFrame": 168,
+      "movingPixels": 940,
+      "endpointMeanDifference": 3.824,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        115,
+        8
+      ]
+    },
+    "animal": {
+      "frames": 120,
+      "seconds": 5.0,
+      "startFrame": 12,
+      "endFrame": 132,
+      "movingPixels": 807,
+      "endpointMeanDifference": 3.127,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        35,
+        7.5
+      ]
+    },
+    "waterparks": {
+      "frames": 142,
+      "seconds": 5.916666666666667,
+      "startFrame": 0,
+      "endFrame": 142,
+      "movingPixels": 3198,
+      "endpointMeanDifference": 2.78,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        47,
+        8
+      ]
+    },
+    "hollywood": {
+      "frames": 179,
+      "seconds": 7.458333333333333,
+      "startFrame": 7,
+      "endFrame": 186,
+      "movingPixels": 583,
+      "endpointMeanDifference": 2.045,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        15.5,
+        8
+      ]
+    },
+    "epcot": {
+      "frames": 130,
+      "seconds": 5.416666666666667,
+      "startFrame": 5,
+      "endFrame": 135,
+      "movingPixels": 478,
+      "endpointMeanDifference": 1.324,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        0.5,
+        8
+      ]
+    },
+    "springs": {
+      "frames": 134,
+      "seconds": 5.583333333333333,
+      "startFrame": 0,
+      "endFrame": 134,
+      "movingPixels": 1366,
+      "endpointMeanDifference": 3.635,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        64,
+        8
+      ]
+    },
+    "waits": {
+      "frames": 122,
+      "seconds": 5.083333333333333,
+      "startFrame": 1,
+      "endFrame": 123,
+      "movingPixels": 630,
+      "endpointMeanDifference": 2.095,
+      "audio": false,
+      "crossfade": false,
+      "sourceWindowSeconds": [
+        87,
+        8
+      ]
+    }
+  }
+}
