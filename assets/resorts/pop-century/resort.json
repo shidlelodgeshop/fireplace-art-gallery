@@ -1,0 +1,19 @@
+{
+  "id": "pop-century",
+  "title": "Pop Century Resort \u2014 1970s",
+  "sourceVideo": "https://www.youtube.com/watch?v=5JHuvmIA1Qg",
+  "backgroundSource": "background-source.png",
+  "music": "music.mp3",
+  "musicOriginalDurationSeconds": 7004.06,
+  "musicRepositoryBitrateKbps": 112,
+  "welcomeFamily": "Paluch Family",
+  "timezone": "America/New_York",
+  "weather": "Lake Buena Vista, FL",
+  "status": "source assets prepared; not installed as a selectable TV resort",
+  "requiresPersonalization": [
+    "replace recorded Milby Family with Paluch Family",
+    "remove recorded room number",
+    "replace recorded weather/date/time with native live overlays",
+    "replace baked bottom navigation with native buttons"
+  ]
+}
