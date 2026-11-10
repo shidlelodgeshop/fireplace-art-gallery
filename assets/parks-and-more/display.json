@@ -18,7 +18,7 @@
   "back": "saratoga",
   "sidebar": {
     "timezone": "America/New_York",
-    "weather": "Lake Buena Vista, FL",
+    "weather": "Shared selected-resort current observation",
     "hours": "current"
   },
   "hoursOnly": [
@@ -53,5 +53,6 @@
   },
   "closedWaitMessage": "No Active Wait Times",
   "closedWaitDetail": "All listed attractions are currently unavailable",
-  "scheduledFireworks": "fireworks.json"
+  "scheduledFireworks": "fireworks.json",
+  "musicSource": "https://youtu.be/g3LTbbjWSko"
 }

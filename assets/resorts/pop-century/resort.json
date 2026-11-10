@@ -8,12 +8,50 @@
   "musicRepositoryBitrateKbps": 112,
   "welcomeFamily": "Paluch Family",
   "timezone": "America/New_York",
-  "weather": "Lake Buena Vista, FL",
+  "weather": {
+    "name": "Disney's Pop Century Resort",
+    "latitude": 28.350328,
+    "longitude": -81.543027,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Pop_Century_Resort",
+    "provider": "Open-Meteo",
+    "temperatureUnit": "fahrenheit",
+    "refreshMinutes": 5,
+    "sharedWithParksAndMore": true
+  },
   "status": "source assets prepared; not installed as a selectable TV resort",
   "requiresPersonalization": [
     "replace recorded Milby Family with Paluch Family",
     "remove recorded room number",
     "replace recorded weather/date/time with native live overlays",
     "replace baked bottom navigation with native buttons"
-  ]
+  ],
+  "name": "Pop Century Resort 70s Building",
+  "sourceChannel": "https://www.youtube.com/@silentstevesparkviews",
+  "renderMode": "source-video-with-native-chrome",
+  "family": "Paluch Family",
+  "variants": {
+    "day": {
+      "status": "ready",
+      "source": "day/source.png",
+      "animation": "day/animation.mp4",
+      "config": "day/motion.json",
+      "background": "day/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    },
+    "night": {
+      "status": "ready",
+      "source": "night/source.png",
+      "animation": "night/animation.mp4",
+      "config": "night/motion.json",
+      "background": "night/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    }
+  },
+  "musicSharedAcrossVariants": true,
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker"
 }

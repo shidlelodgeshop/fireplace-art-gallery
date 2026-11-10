@@ -1,0 +1,72 @@
+{
+  "id": "grand-floridian",
+  "name": "Grand Floridian Resort",
+  "family": "Paluch Family",
+  "background": "background.png",
+  "music": "music.mp3",
+  "buttons": [
+    {
+      "label": "Watch TV",
+      "package": "com.amazon.firetv.youtube.tv"
+    },
+    {
+      "label": "Disney on Demand",
+      "package": "com.disney.disneyplus"
+    },
+    {
+      "label": "Music",
+      "action": "toggleMusic"
+    },
+    {
+      "label": "Settings",
+      "action": "fireStickSettings"
+    },
+    {
+      "label": "Parks & More",
+      "action": "liveWaitTimes"
+    }
+  ],
+  "weather": {
+    "name": "Disney's Grand Floridian Resort & Spa",
+    "latitude": 28.411444,
+    "longitude": -81.586792,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Grand_Floridian_Resort_%26_Spa",
+    "provider": "Open-Meteo",
+    "temperatureUnit": "fahrenheit",
+    "refreshMinutes": 5,
+    "sharedWithParksAndMore": true
+  },
+  "menuStyle": {
+    "icons": [
+      "television",
+      "mickey-play",
+      "cast",
+      "hotel-bell",
+      "castle"
+    ],
+    "normalColor": "#000000",
+    "selectedColor": "#99415e"
+  },
+  "sourceVideo": "https://www.youtube.com/watch?v=IW6G7bIJcaw",
+  "sourceChannel": "https://www.youtube.com/@silentstevesparkviews",
+  "renderMode": "source-video-with-native-chrome",
+  "variants": {
+    "day": {
+      "status": "ready",
+      "source": "day/source.png",
+      "animation": "day/animation.mp4",
+      "config": "day/motion.json",
+      "background": "day/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    },
+    "night": {
+      "status": "awaiting_original_footage",
+      "reason": "No matching original nighttime segment found in this channel upload; no synthetic night version authorized."
+    }
+  },
+  "musicSharedAcrossVariants": true,
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker"
+}

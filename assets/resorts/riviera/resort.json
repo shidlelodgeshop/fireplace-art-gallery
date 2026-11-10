@@ -1,0 +1,78 @@
+{
+  "id": "riviera",
+  "name": "Riviera Resort",
+  "family": "Paluch Family",
+  "background": "background.png",
+  "music": "music.mp3",
+  "buttons": [
+    {
+      "label": "Watch TV",
+      "package": "com.amazon.firetv.youtube.tv"
+    },
+    {
+      "label": "Disney on Demand",
+      "package": "com.disney.disneyplus"
+    },
+    {
+      "label": "Music",
+      "action": "toggleMusic"
+    },
+    {
+      "label": "Settings",
+      "action": "fireStickSettings"
+    },
+    {
+      "label": "Parks & More",
+      "action": "liveWaitTimes"
+    }
+  ],
+  "weather": {
+    "name": "Disney's Riviera Resort",
+    "latitude": 28.366389,
+    "longitude": -81.540278,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Riviera_Resort",
+    "provider": "Open-Meteo",
+    "temperatureUnit": "fahrenheit",
+    "refreshMinutes": 5,
+    "sharedWithParksAndMore": true
+  },
+  "menuStyle": {
+    "icons": [
+      "television",
+      "mickey-play",
+      "cast",
+      "hotel-bell",
+      "castle"
+    ],
+    "normalColor": "#000000",
+    "selectedColor": "#99415e"
+  },
+  "sourceVideo": "https://www.youtube.com/watch?v=WQkLehDoeQA",
+  "sourceChannel": "https://www.youtube.com/@silentstevesparkviews",
+  "renderMode": "source-video-with-native-chrome",
+  "variants": {
+    "day": {
+      "status": "ready",
+      "source": "day/source.png",
+      "animation": "day/animation.mp4",
+      "config": "day/motion.json",
+      "background": "day/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    },
+    "night": {
+      "status": "ready",
+      "source": "night/source.png",
+      "animation": "night/animation.mp4",
+      "config": "night/motion.json",
+      "background": "night/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    }
+  },
+  "musicSharedAcrossVariants": true,
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker"
+}

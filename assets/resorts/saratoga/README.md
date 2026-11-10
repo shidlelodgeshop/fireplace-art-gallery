@@ -1,9 +1,5 @@
-Saratoga Springs personal resort screen.
+# Disney's Saratoga Springs Resort & Spa
 
-background.png: personalized edit of the screenshot supplied by the user.
-music.mp3: extracted from the MP3 ZIP supplied by the user.
-resort.json: button mappings.
+Paluch Family welcome screen. Day/night switches automatically at this resort's sunrise and sunset; both lighting states share one soundtrack. Live weather, date/time and interactive buttons are native overlays, with black icons turning red on focus. Parks & More shares the selected resort's weather observation.
 
-User-provided media retain their respective ownership. The image has blank areas for the current clock and interactive native buttons.
-
-Audio cleanup: music-cleaned.m4a is the playback copy, filtered from the original music.mp3. It uses a 30 Hz low-rumble filter and narrow notches at 60/120/240 Hz, with no volume boost. The original MP3 is preserved.
+Clean original daytime banner and native water motion. Night is a clean recreation approved by the user, with the supplied nighttime video used only as a lighting reference; see night/edit-prompt.txt.

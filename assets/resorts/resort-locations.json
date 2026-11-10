@@ -1,0 +1,149 @@
+{
+  "saratoga": {
+    "name": "Disney's Saratoga Springs Resort & Spa",
+    "latitude": 28.376712,
+    "longitude": -81.520194,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Saratoga_Springs_Resort_%26_Spa"
+  },
+  "old-key-west": {
+    "name": "Disney's Old Key West Resort",
+    "latitude": 28.373583,
+    "longitude": -81.534111,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Old_Key_West_Resort"
+  },
+  "contemporary": {
+    "name": "Disney's Contemporary Resort",
+    "latitude": 28.415,
+    "longitude": -81.574,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Contemporary_Resort"
+  },
+  "boardwalk": {
+    "name": "Disney's BoardWalk Resort",
+    "latitude": 28.36722222,
+    "longitude": -81.55638889,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_BoardWalk_Resort"
+  },
+  "coronado-springs": {
+    "name": "Disney's Coronado Springs Resort",
+    "latitude": 28.36386,
+    "longitude": -81.57365,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Coronado_Springs_Resort"
+  },
+  "animal-kingdom-lodge": {
+    "name": "Disney's Animal Kingdom Lodge",
+    "latitude": 28.353637,
+    "longitude": -81.602756,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Animal_Kingdom_Lodge"
+  },
+  "pop-century": {
+    "name": "Disney's Pop Century Resort",
+    "latitude": 28.350328,
+    "longitude": -81.543027,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Pop_Century_Resort"
+  },
+  "fort-wilderness": {
+    "name": "Disney's Fort Wilderness Resort & Campground",
+    "latitude": 28.407431,
+    "longitude": -81.558563,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Fort_Wilderness_Resort_%26_Campground"
+  },
+  "all-star-movies": {
+    "name": "Disney's All-Star Movies Resort",
+    "latitude": 28.33595,
+    "longitude": -81.57221,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_All-Star_Movies_Resort"
+  },
+  "all-star-music": {
+    "name": "Disney's All-Star Music Resort",
+    "latitude": 28.339842,
+    "longitude": -81.57295,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_All-Star_Music_Resort"
+  },
+  "riviera": {
+    "name": "Disney's Riviera Resort",
+    "latitude": 28.366389,
+    "longitude": -81.540278,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Riviera_Resort"
+  },
+  "wilderness-lodge": {
+    "name": "Disney's Wilderness Lodge",
+    "latitude": 28.40939,
+    "longitude": -81.572615,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Wilderness_Lodge"
+  },
+  "caribbean-beach": {
+    "name": "Disney's Caribbean Beach Resort",
+    "latitude": 28.36251389,
+    "longitude": -81.54266944,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Caribbean_Beach_Resort"
+  },
+  "beach-club": {
+    "name": "Disney's Beach Club Resort",
+    "latitude": 28.371241,
+    "longitude": -81.556451,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Beach_Club_Resort"
+  },
+  "art-of-animation": {
+    "name": "Disney's Art of Animation Resort",
+    "latitude": 28.35027222,
+    "longitude": -81.54849722,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Art_of_Animation_Resort"
+  },
+  "yacht-club": {
+    "name": "Disney's Yacht Club Resort",
+    "latitude": 28.37068,
+    "longitude": -81.55866,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Yacht_Club_Resort"
+  },
+  "polynesian-village": {
+    "name": "Disney's Polynesian Village Resort",
+    "latitude": 28.4057,
+    "longitude": -81.5843,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Polynesian_Village_Resort"
+  },
+  "grand-floridian": {
+    "name": "Disney's Grand Floridian Resort & Spa",
+    "latitude": 28.411444,
+    "longitude": -81.586792,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Grand_Floridian_Resort_%26_Spa"
+  },
+  "all-star-sports": {
+    "name": "Disney's All-Star Sports Resort",
+    "latitude": 28.342437,
+    "longitude": -81.574715,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://commons.wikimedia.org/wiki/File:Disney%27s_All-Star_Sports_Resort_09.jpg"
+  },
+  "port-orleans-french-quarter": {
+    "name": "Disney's Port Orleans Resort \u2014 French Quarter",
+    "latitude": 28.38053,
+    "longitude": -81.536758,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://coasterpedia.net/wiki/Disney%27s_Port_Orleans_Resort_-_French_Quarter"
+  },
+  "port-orleans-riverside": {
+    "name": "Disney's Port Orleans Resort \u2014 Riverside",
+    "latitude": 28.386331,
+    "longitude": -81.536868,
+    "timezone": "America/New_York",
+    "coordinateSource": "https://coasterpedia.net/wiki/Disney%27s_Port_Orleans_Resort_-_Riverside"
+  }
+}

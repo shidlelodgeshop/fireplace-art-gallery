@@ -1,0 +1,31 @@
+{
+  "top": 0.244,
+  "bottom": 0.846,
+  "nativeChrome": true,
+  "kind": "night",
+  "sourceVideo": "https://www.youtube.com/watch?v=n7BgBED3V9Y",
+  "sourceWindowSeconds": {
+    "start": 1425.33,
+    "end": 1485.33
+  },
+  "recordedTickerCropped": false,
+  "crop": [
+    0,
+    174,
+    1280,
+    434
+  ],
+  "textColor": "#fffef7",
+  "welcomeTop": 0.1,
+  "loopStartSeconds": 6.0,
+  "loopEndSeconds": 26.0,
+  "loopDurationSeconds": 20.0,
+  "boundaryMeanSquareError": 15.444791984558105,
+  "animation": "animation.mp4",
+  "source": "source.png",
+  "status": "native UI overlays: Paluch Family, live weather/time, functional navigation",
+  "sourceFrameRate": 30.0,
+  "playbackFrameRate": 30,
+  "playbackSpeed": 1.0,
+  "decodeProfile": "H.264 fast-decode; no B-frame reordering"
+}

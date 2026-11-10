@@ -1,6 +1,6 @@
 {
   "id": "saratoga",
-  "name": "Saratoga Springs Resort & Spa",
+  "name": "Saratoga Springs Resort",
   "family": "Paluch Family",
   "background": "background.png",
   "music": "music-cleaned.m4a",
@@ -27,13 +27,15 @@
     }
   ],
   "weather": {
-    "provider": "Open-Meteo",
-    "location": "Lake Buena Vista, FL",
-    "latitude": 28.3936,
-    "longitude": -81.5387,
+    "name": "Disney's Saratoga Springs Resort & Spa",
+    "latitude": 28.376712,
+    "longitude": -81.520194,
     "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Saratoga_Springs_Resort_%26_Spa",
+    "provider": "Open-Meteo",
     "temperatureUnit": "fahrenheit",
-    "refreshMinutes": 10
+    "refreshMinutes": 5,
+    "sharedWithParksAndMore": true
   },
   "menuStyle": {
     "icons": [
@@ -46,5 +48,23 @@
     "normalColor": "#000000",
     "selectedColor": "#99415e"
   },
-  "originalMusic": "music.mp3"
+  "sourceVideo": "https://www.youtube.com/watch?v=_kOCkNkv-3M",
+  "sourceChannel": "https://www.youtube.com/@silentstevesparkviews",
+  "renderMode": "native-water-mesh",
+  "variants": {
+    "day": {
+      "status": "ready",
+      "background": "day/background.png",
+      "renderer": "native-water-mesh"
+    },
+    "night": {
+      "status": "ready",
+      "background": "night/background.png",
+      "renderer": "native-water-mesh",
+      "provenance": "User-authorized nighttime recreation from clean daytime art, using https://youtu.be/pIHwDVnTXgU as lighting reference",
+      "editPrompt": "night/edit-prompt.txt"
+    }
+  },
+  "musicSharedAcrossVariants": true,
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker"
 }

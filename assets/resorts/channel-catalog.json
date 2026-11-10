@@ -1,0 +1,815 @@
+{
+  "sourceChannel": "https://www.youtube.com/@silentstevesparkviews",
+  "selectionRule": "Matching modern resort welcome layout; one source per resort. Original lighting footage except the user-authorized clean Saratoga nighttime recreation.",
+  "resortCount": 21,
+  "animatedVariantCount": 40,
+  "nightPending": [
+    "grand-floridian",
+    "port-orleans-riverside"
+  ],
+  "resorts": [
+    {
+      "id": "all-star-music",
+      "title": "All-Star Music Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=SOtBWzmYulY",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "fort-wilderness",
+      "title": "Fort Wilderness Resort - Cabins - Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=V2ezrNsEEs0",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "all-star-movies",
+      "title": "All Star Movies Resort Splash Screen @ WDW   Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=cUmnFsP2auU",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "all-star-sports",
+      "title": "All-Star Sports Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=JPfzRVrG9-I",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "wilderness-lodge",
+      "title": "Wilderness Lodge Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=e6kIr13haIc",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "riviera",
+      "title": "Riviera Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=WQkLehDoeQA",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "caribbean-beach",
+      "title": "Caribbean Beach Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=hPkG2FP_X7o",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "beach-club",
+      "title": "Beach Club Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=_kg4kl9jhsM",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "art-of-animation",
+      "title": "Art of Animation Resort - NEMO area Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=WHkkIop_QXY",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "yacht-club",
+      "title": "Yacht Club Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=bLsN-Efvbsw",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "polynesian-village",
+      "title": "Polynesian Village Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=-1LpIlUU-DI",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "grand-floridian",
+      "title": "Grand Floridian Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=IW6G7bIJcaw",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "awaiting_original_footage",
+          "reason": "No matching original nighttime segment found in this channel upload; no synthetic night version authorized."
+        }
+      }
+    },
+    {
+      "id": "port-orleans-riverside",
+      "title": "Port Orleans Resort Riverside Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=hLVYA5-lbb4",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "awaiting_original_footage",
+          "reason": "No matching original nighttime segment found in this channel upload; no synthetic night version authorized."
+        }
+      }
+    },
+    {
+      "id": "old-key-west",
+      "title": "Old Key West Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=gAljbZRY3nQ",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "contemporary",
+      "title": "Contemporary Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=n7BgBED3V9Y",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "boardwalk",
+      "title": "Boardwalk Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=Vx0stpUL1tc",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "coronado-springs",
+      "title": "Coronado Springs Resort - Gran Destino Tower & Casitas Area Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=3ZCXqr-bmJU",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "port-orleans-french-quarter",
+      "title": "Port Orleans French Quarter Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=095jVWbRq7w",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "animal-kingdom-lodge",
+      "title": "Animal Kingdom Lodge Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=B69ynbtV-tk",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    },
+    {
+      "id": "saratoga",
+      "title": "Saratoga Springs Resort Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=_kOCkNkv-3M",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "background": "day/background.png",
+          "renderer": "native-water-mesh"
+        },
+        "night": {
+          "status": "ready",
+          "background": "night/background.png",
+          "renderer": "native-water-mesh",
+          "provenance": "User-authorized nighttime recreation from clean daytime art, using https://youtu.be/pIHwDVnTXgU as lighting reference",
+          "editPrompt": "night/edit-prompt.txt"
+        }
+      }
+    },
+    {
+      "id": "pop-century",
+      "title": "Pop Century Resort 70s Building Splash Screen @ WDW - Disney Resort TV",
+      "sourceVideo": "https://www.youtube.com/watch?v=5JHuvmIA1Qg",
+      "variants": {
+        "day": {
+          "status": "ready",
+          "source": "day/source.png",
+          "animation": "day/animation.mp4",
+          "config": "day/motion.json",
+          "background": "day/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        },
+        "night": {
+          "status": "ready",
+          "source": "night/source.png",
+          "animation": "night/animation.mp4",
+          "config": "night/motion.json",
+          "background": "night/background.png",
+          "playbackSpeed": 1.0,
+          "sourceFrameRate": 30,
+          "playbackFrameRate": 30
+        }
+      }
+    }
+  ],
+  "audit": [
+    {
+      "videoId": "5JHuvmIA1Qg",
+      "title": "Pop Century Resort 70s Building Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "pop-century",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "gAljbZRY3nQ",
+      "title": "Old Key West Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "old-key-west",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "Vx0stpUL1tc",
+      "title": "Boardwalk Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "boardwalk",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "V2ezrNsEEs0",
+      "title": "Fort Wilderness Resort - Cabins - Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "fort-wilderness",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "cUmnFsP2auU",
+      "title": "All Star Movies Resort Splash Screen @ WDW   Disney Resort TV",
+      "selected": true,
+      "resort": "all-star-movies",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "SOtBWzmYulY",
+      "title": "All-Star Music Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "all-star-music",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "JPfzRVrG9-I",
+      "title": "All-Star Sports Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "all-star-sports",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "b4-oJU7tr88",
+      "title": "Pop Century Resort 50s Building Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "UCx3-XA1IZw",
+      "title": "Caribbean Beach old  ver Splash Screen @ WDW Inn RTV - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "KIa-0UwL4tY",
+      "title": "Boardwalk Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "pFqLLwqoMmc",
+      "title": "Bay Lake Tower/Contemporary Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Older blue information layout and duplicate Contemporary"
+    },
+    {
+      "videoId": "3ZCXqr-bmJU",
+      "title": "Coronado Springs Resort - Gran Destino Tower & Casitas Area Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "coronado-springs",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "WQkLehDoeQA",
+      "title": "Riviera Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "riviera",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "e6kIr13haIc",
+      "title": "Wilderness Lodge Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "wilderness-lodge",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "hPkG2FP_X7o",
+      "title": "Caribbean Beach Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "caribbean-beach",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "_kg4kl9jhsM",
+      "title": "Beach Club Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "beach-club",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "n7BgBED3V9Y",
+      "title": "Contemporary Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "contemporary",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "WHkkIop_QXY",
+      "title": "Art of Animation Resort - NEMO area Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "art-of-animation",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "raB3weP6Cdg",
+      "title": "Pop Century Resort 60s Building Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "bLsN-Efvbsw",
+      "title": "Yacht Club Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "yacht-club",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "Btd56xXB1cE",
+      "title": "Pop Century Resort 90s Building Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "095jVWbRq7w",
+      "title": "Port Orleans French Quarter Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "port-orleans-french-quarter",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "_s318h066f0",
+      "title": "Art of Animation Resort - CARS area Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "-1LpIlUU-DI",
+      "title": "Polynesian Village Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "polynesian-village",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "fIZ-zMmhKsk",
+      "title": "Disney Resort TV -  Pop Century Resort 80s Building Splash Screen @ WDW",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "B69ynbtV-tk",
+      "title": "Animal Kingdom Lodge Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "animal-kingdom-lodge",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "La37-VRkjR8",
+      "title": "Art of Animation Resort - Little Mermaid area Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "IW6G7bIJcaw",
+      "title": "Grand Floridian Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "grand-floridian",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "EkPes3MMIfM",
+      "title": "Art of Animation Resort - Lion King area Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "ekGR_55I0mU",
+      "title": "Old Key West Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "hLVYA5-lbb4",
+      "title": "Port Orleans Resort Riverside Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "port-orleans-riverside",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "mdOUddezxiY",
+      "title": "(Older Ver.) Boardwalk Villas Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "xRd9s4kV3Ww",
+      "title": "(Older Ver.) Caribbean Beach Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "DjIxoCyxCr4",
+      "title": "Older Ver.) Yacht & Beach Club Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    },
+    {
+      "videoId": "_kOCkNkv-3M",
+      "title": "Saratoga Springs Resort Splash Screen @ WDW - Disney Resort TV",
+      "selected": true,
+      "resort": "saratoga",
+      "reason": "Selected matching welcome screen; resort-level media shared by Day/Night"
+    },
+    {
+      "videoId": "tUKgUyERnlU",
+      "title": "Coronado Springs Resort Ranchos section (i think) Splash Screen @ WDW - Disney Resort TV",
+      "selected": false,
+      "resort": null,
+      "reason": "Duplicate resort upload, older layout, or alternate building/area of an already selected resort"
+    }
+  ],
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker",
+  "musicSharedAcrossVariants": true
+}

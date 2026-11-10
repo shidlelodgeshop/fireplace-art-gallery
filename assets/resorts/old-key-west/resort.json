@@ -27,13 +27,15 @@
     }
   ],
   "weather": {
-    "provider": "Open-Meteo",
-    "location": "Lake Buena Vista, FL",
-    "latitude": 28.3936,
-    "longitude": -81.5387,
+    "name": "Disney's Old Key West Resort",
+    "latitude": 28.373583,
+    "longitude": -81.534111,
     "timezone": "America/New_York",
+    "coordinateSource": "https://en.wikipedia.org/wiki/Disney%27s_Old_Key_West_Resort",
+    "provider": "Open-Meteo",
     "temperatureUnit": "fahrenheit",
-    "refreshMinutes": 10
+    "refreshMinutes": 5,
+    "sharedWithParksAndMore": true
   },
   "menuStyle": {
     "icons": [
@@ -48,5 +50,31 @@
   },
   "sourceVideo": "https://www.youtube.com/watch?v=gAljbZRY3nQ",
   "musicDurationSeconds": 7138,
-  "musicBitrateKbps": 96
+  "musicBitrateKbps": 96,
+  "sourceChannel": "https://www.youtube.com/@silentstevesparkviews",
+  "renderMode": "source-video-with-native-chrome",
+  "variants": {
+    "day": {
+      "status": "ready",
+      "source": "day/source.png",
+      "animation": "day/animation.mp4",
+      "config": "day/motion.json",
+      "background": "day/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    },
+    "night": {
+      "status": "ready",
+      "source": "night/source.png",
+      "animation": "night/animation.mp4",
+      "config": "night/motion.json",
+      "background": "night/background.png",
+      "playbackSpeed": 1.0,
+      "sourceFrameRate": 30,
+      "playbackFrameRate": 30
+    }
+  },
+  "musicSharedAcrossVariants": true,
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker"
 }
