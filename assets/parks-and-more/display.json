@@ -1,0 +1,22 @@
+{
+  "pageSeconds": 5,
+  "parkOrder": [
+    "epcot",
+    "hollywood",
+    "animal",
+    "magic",
+    "springs"
+  ],
+  "pageOrder": [
+    "hours",
+    "waits"
+  ],
+  "ridesPerWaitPage": 8,
+  "music": "music.mp3",
+  "back": "saratoga",
+  "sidebar": {
+    "timezone": "America/New_York",
+    "weather": "Lake Buena Vista, FL",
+    "hours": "current"
+  }
+}
