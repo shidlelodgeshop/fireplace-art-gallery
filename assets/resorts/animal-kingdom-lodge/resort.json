@@ -1,0 +1,52 @@
+{
+  "id": "animal-kingdom-lodge",
+  "name": "Animal Kingdom Lodge",
+  "family": "Paluch Family",
+  "background": "background.png",
+  "music": "music.mp3",
+  "buttons": [
+    {
+      "label": "Watch TV",
+      "package": "com.amazon.firetv.youtube.tv"
+    },
+    {
+      "label": "Disney on Demand",
+      "package": "com.disney.disneyplus"
+    },
+    {
+      "label": "Music",
+      "action": "toggleMusic"
+    },
+    {
+      "label": "Settings",
+      "action": "fireStickSettings"
+    },
+    {
+      "label": "Parks & More",
+      "action": "liveWaitTimes"
+    }
+  ],
+  "weather": {
+    "provider": "Open-Meteo",
+    "location": "Lake Buena Vista, FL",
+    "latitude": 28.3936,
+    "longitude": -81.5387,
+    "timezone": "America/New_York",
+    "temperatureUnit": "fahrenheit",
+    "refreshMinutes": 10
+  },
+  "menuStyle": {
+    "icons": [
+      "television",
+      "mickey-play",
+      "cast",
+      "hotel-bell",
+      "castle"
+    ],
+    "normalColor": "#000000",
+    "selectedColor": "#99415e"
+  },
+  "sourceVideo": "https://www.youtube.com/watch?v=B69ynbtV-tk",
+  "musicDurationSeconds": 5395,
+  "musicBitrateKbps": 128
+}
