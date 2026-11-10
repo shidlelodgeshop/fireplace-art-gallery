@@ -9,6 +9,8 @@
   ],
   "pageOrder": [
     "hours",
+    "shows",
+    "fireworks",
     "waits"
   ],
   "ridesPerWaitPage": 8,
@@ -27,5 +29,12 @@
   "animation": {
     "transition": "cut",
     "source": "awaiting supplied park animation"
+  },
+  "entertainment": {
+    "refreshSeconds": 60,
+    "timezone": "America/New_York",
+    "upcomingTodayOnly": true,
+    "excludeMeetAndGreetOperatingHours": true,
+    "skipFireworksWhenNoneScheduled": true
   }
 }
