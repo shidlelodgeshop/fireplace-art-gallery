@@ -25,5 +25,25 @@
       "label": "Parks & More",
       "action": "liveWaitTimes"
     }
-  ]
+  ],
+  "weather": {
+    "provider": "Open-Meteo",
+    "location": "Lake Buena Vista, FL",
+    "latitude": 28.3936,
+    "longitude": -81.5387,
+    "timezone": "America/New_York",
+    "temperatureUnit": "fahrenheit",
+    "refreshMinutes": 10
+  },
+  "menuStyle": {
+    "icons": [
+      "television",
+      "mickey-play",
+      "cast",
+      "hotel-bell",
+      "castle"
+    ],
+    "normalColor": "#000000",
+    "selectedColor": "#99415e"
+  }
 }
