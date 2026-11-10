@@ -3,7 +3,7 @@
   "name": "Saratoga Springs Resort & Spa",
   "family": "Paluch Family",
   "background": "background.png",
-  "music": "music.mp3",
+  "music": "music-cleaned.m4a",
   "buttons": [
     {
       "label": "Watch TV",
@@ -45,5 +45,6 @@
     ],
     "normalColor": "#000000",
     "selectedColor": "#99415e"
-  }
+  },
+  "originalMusic": "music.mp3"
 }
