@@ -66,5 +66,6 @@
     }
   },
   "musicSharedAcrossVariants": true,
-  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker"
+  "lighting": "Automatic sunrise/sunset at selected resort coordinates; no Day/Night picker",
+  "fountainMotion": "Native rising water jets, falling spray and outward impact ripples; lake motion stays separate from the static artwork"
 }
