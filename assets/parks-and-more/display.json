@@ -18,5 +18,14 @@
     "timezone": "America/New_York",
     "weather": "Lake Buena Vista, FL",
     "hours": "current"
+  },
+  "hoursOnly": [
+    "springs"
+  ],
+  "showPageCounters": false,
+  "showSidebarFooter": false,
+  "animation": {
+    "transition": "cut",
+    "source": "awaiting supplied park animation"
   }
 }
