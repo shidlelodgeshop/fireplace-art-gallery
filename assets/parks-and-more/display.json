@@ -29,10 +29,15 @@
   "animation": {
     "transition": "cut",
     "source": "loops/loops.json",
-    "format": "silent H.264 720p24",
+    "format": "silent H.264; mixed 1080p30 and 720p24",
     "crossfade": false,
     "fallback": "existing still backgrounds",
-    "waterparks": "captured for reuse; not in current page rotation"
+    "waterparks": "captured for reuse; not in current page rotation",
+    "playOnceAndHold": [
+      "epcot",
+      "magic"
+    ],
+    "oncePer": "scene visit"
   },
   "entertainment": {
     "refreshSeconds": 60,

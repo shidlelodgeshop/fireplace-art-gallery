@@ -1,8 +1,8 @@
 {
   "source": "https://www.youtube.com/watch?v=ccdWVfCuATo",
   "sourceTitle": "WDW Today Channel - January 2026 - New Music!! | Walt Disney World Resort TV",
-  "format": "H.264 Main Level 3.1, 1280x720, 24 fps, silent MP4",
-  "processing": "Recorded text and sidebar replaced with clean sky and sidebar; matched endpoints; no crossfade.",
+  "format": "Silent H.264 MP4; EPCOT/Animal/Magic 1080p30, remaining clips 720p24",
+  "processing": "Recorded information removed. EPCOT keeps composition still and isolates original flock. Castle retains complete Tinker Bell then Dumbo sequence. Animal retains longer original canopy movement.",
   "active": [
     "epcot",
     "hollywood",
@@ -16,31 +16,45 @@
   ],
   "clips": {
     "magic": {
-      "frames": 121,
-      "seconds": 5.041666666666667,
-      "startFrame": 47,
-      "endFrame": 168,
-      "movingPixels": 940,
-      "endpointMeanDifference": 3.824,
+      "frames": 414,
+      "fps": 30,
+      "width": 1920,
+      "height": 1080,
+      "seconds": 13.8,
       "audio": false,
       "crossfade": false,
+      "repeats": false,
+      "onCompletion": "hold final frame until leaving scene",
+      "motion": "Full original order: Tinker Bell trail to castle right, then Dumbo to castle left",
+      "eventsSeconds": {
+        "tinkerbell": [
+          0.7,
+          4.8
+        ],
+        "dumbo": [
+          5.4,
+          7.3
+        ]
+      },
       "sourceWindowSeconds": [
-        115,
-        8
+        112,
+        13.8
       ]
     },
     "animal": {
-      "frames": 120,
-      "seconds": 5.0,
-      "startFrame": 12,
-      "endFrame": 132,
-      "movingPixels": 807,
-      "endpointMeanDifference": 3.127,
+      "frames": 411,
+      "fps": 30,
+      "width": 1920,
+      "height": 1080,
+      "seconds": 13.7,
       "audio": false,
       "crossfade": false,
+      "repeats": true,
+      "onCompletion": "repeat",
+      "motion": "Full-resolution original canopy movement across longer capture",
       "sourceWindowSeconds": [
-        35,
-        7.5
+        29.1,
+        13.7
       ]
     },
     "waterparks": {
@@ -72,17 +86,19 @@
       ]
     },
     "epcot": {
-      "frames": 130,
-      "seconds": 5.416666666666667,
-      "startFrame": 5,
-      "endFrame": 135,
-      "movingPixels": 478,
-      "endpointMeanDifference": 1.324,
+      "frames": 420,
+      "fps": 30,
+      "width": 1920,
+      "height": 1080,
+      "seconds": 14,
       "audio": false,
       "crossfade": false,
+      "repeats": false,
+      "onCompletion": "hold final frame until leaving scene",
+      "motion": "Still composition, original flock isolated from source; one pass",
       "sourceWindowSeconds": [
-        0.5,
-        8
+        129.3,
+        14
       ]
     },
     "springs": {

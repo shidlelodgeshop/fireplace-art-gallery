@@ -1,9 +1,14 @@
-# Captured park animation loops
+# Captured park motion clips
 
-Source reference: [WDW Today Channel — January 2026](https://www.youtube.com/watch?v=ccdWVfCuATo), by WDW Today. These are processed excerpts of that reference, not Disney-provided source animation files. No ownership or new license is asserted over the source artwork.
+Source: [WDW Today Channel — January 2026](https://www.youtube.com/watch?v=ccdWVfCuATo), by WDW Today. These are processed excerpts, not Disney-provided source animation files. No ownership or new license is asserted over the source artwork.
 
-Seven silent H.264 MP4 clips at 1280×720 / 24 fps. Recorded information overlays and sidebar text were removed so the app can display live information. Clip endpoints were chosen for a close visual match; there is no crossfade, zoom, or reverse playback. Small endpoint differences can remain in moving objects.
+Seven silent H.264 MP4 assets. EPCOT, Animal Kingdom, and Magic Kingdom use the original 1920×1080 / 30 fps resolution. The remaining four use 1280×720 / 24 fps. Recorded information and sidebar text are removed so the native app can display live information. There is no crossfade, zoom, or reverse playback.
 
-The native Parks player uses epcot, hollywood, animal, magic, springs, and waits. waterparks is saved for reuse but is not a new live-data page. Existing Parks music plays separately. Failed video playback falls back to the existing still image.
+- EPCOT: the composition stays still; the original flock is isolated and flies past once. The last frame holds after the pass.
+- Magic Kingdom: the full captured sequence preserves Tinker Bell's trail to the right of the castle, followed by Dumbo emerging on the left. Plays once and holds the final frame.
+- Animal Kingdom: longer full-resolution canopy motion repeats as ambient movement.
+- Hollywood, Disney Springs, and the wait-time background repeat as ambient motion. Waterparks is saved for reuse but is not a new live-data page.
 
-See loops.json for source windows, trimmed durations, and endpoint checks. The foreground animation continues while page rotation is paused; Back releases playback and returns to Saratoga.
+Fly-bys run once per scene visit; hours/showtimes/fireworks page changes do not restart them. Existing Parks music plays separately. Failed video playback falls back to a still image. Pausing page rotation leaves ambient motion running. Back releases playback and restores Saratoga.
+
+See loops.json for durations, source windows, and playback behavior. Small differences at ambient loop endpoints may remain.
