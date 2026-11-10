@@ -1,0 +1,318 @@
+{
+  "version": 1,
+  "order": "sequential; repeat after last track",
+  "resume": "current track and position persist across leaving Parks & More and app restarts",
+  "screenChangesDoNotChangeMusic": true,
+  "tracks": [
+    {
+      "id": "epcot-entrance",
+      "title": "Epcot Entrance Area Music Loop - Walt Disney World [NEW] (2021)",
+      "sourceVideo": "https://www.youtube.com/watch?v=vJZGkSvK2eg",
+      "uploader": "RideRover Media",
+      "durationSeconds": 3432,
+      "file": "parks/playlist/epcot-entrance.mp3",
+      "asset": "epcot-entrance.mp3",
+      "sha256": "cdf4ab5130c066541381e7587e088ff0ed48f20236fa527cfc1036cc2374fac2",
+      "loudnessTargetLUFS": -20,
+      "encoding": "MP3 128 kbps stereo",
+      "chapters": [
+        {
+          "start_time": 0,
+          "title": "The Magic Kingdom",
+          "end_time": 61
+        },
+        {
+          "start_time": 61,
+          "title": "Rise of the Champions",
+          "end_time": 249
+        },
+        {
+          "start_time": 249,
+          "title": "Journey To Mars",
+          "end_time": 381
+        },
+        {
+          "start_time": 381,
+          "title": "Nebulae",
+          "end_time": 558
+        },
+        {
+          "start_time": 558,
+          "title": "A Different Set of Rules",
+          "end_time": 635
+        },
+        {
+          "start_time": 635,
+          "title": "Beauty Within",
+          "end_time": 772
+        },
+        {
+          "start_time": 772,
+          "title": "The Numbers Build",
+          "end_time": 1078
+        },
+        {
+          "start_time": 1078,
+          "title": "Crossing Continents",
+          "end_time": 1214
+        },
+        {
+          "start_time": 1214,
+          "title": "Transform",
+          "end_time": 1346
+        },
+        {
+          "start_time": 1346,
+          "title": "Finding Your Way",
+          "end_time": 1477
+        },
+        {
+          "start_time": 1477,
+          "title": "An Ingenious Technique",
+          "end_time": 1625
+        },
+        {
+          "start_time": 1625,
+          "title": "Reach the Sky",
+          "end_time": 1795
+        },
+        {
+          "start_time": 1795,
+          "title": "The Ocean Returns the Favour",
+          "end_time": 1922
+        },
+        {
+          "start_time": 1922,
+          "title": "Nero (Archangel)",
+          "end_time": 2106
+        },
+        {
+          "start_time": 2106,
+          "title": "The Seasonal Seas",
+          "end_time": 2147
+        },
+        {
+          "start_time": 2147,
+          "title": "Mayflies",
+          "end_time": 2310
+        },
+        {
+          "start_time": 2310,
+          "title": "Eternal Beauty",
+          "end_time": 2461
+        },
+        {
+          "start_time": 2461,
+          "title": "She\u2019s a Superhero",
+          "end_time": 2539
+        },
+        {
+          "start_time": 2539,
+          "title": "A Greater Resilience",
+          "end_time": 2767
+        },
+        {
+          "start_time": 2767,
+          "title": "The Game is Afoot",
+          "end_time": 2834
+        },
+        {
+          "start_time": 2834,
+          "title": "The Oceans Belong to Us All",
+          "end_time": 3204
+        },
+        {
+          "start_time": 3204,
+          "title": "Echo Fires Up Another",
+          "end_time": 3355
+        },
+        {
+          "start_time": 3355,
+          "title": "Beyond the Horizon",
+          "end_time": 3432
+        }
+      ]
+    },
+    {
+      "id": "magic-kingdom-entrance",
+      "title": "Magic Kingdom Entrance Area Music Loop - Walt Disney World (2020)",
+      "sourceVideo": "https://www.youtube.com/watch?v=rprFYEj6mkA",
+      "uploader": "RideRover Media",
+      "durationSeconds": 3710,
+      "file": "parks/playlist/magic-kingdom-entrance.mp3",
+      "asset": "magic-kingdom-entrance.mp3",
+      "sha256": "925e327e4c49fd1b43c5da4b473069013af4d1e3f4ebf3c57e93e494833426a2",
+      "loudnessTargetLUFS": -20,
+      "encoding": "MP3 128 kbps stereo",
+      "chapters": [
+        {
+          "start_time": 0,
+          "title": "Wish Upon a Star",
+          "end_time": 158
+        },
+        {
+          "start_time": 158,
+          "title": "Mickey Mouse Club March",
+          "end_time": 268
+        },
+        {
+          "start_time": 268,
+          "title": "Tiki Room",
+          "end_time": 368
+        },
+        {
+          "start_time": 368,
+          "title": "Hi-Diddle-Dee-Dee",
+          "end_time": 450
+        },
+        {
+          "start_time": 450,
+          "title": "Under the Sea",
+          "end_time": 609
+        },
+        {
+          "start_time": 609,
+          "title": "Come Again (Country Bear Jamboree)",
+          "end_time": 722
+        },
+        {
+          "start_time": 722,
+          "title": "Heigh-Ho Remix",
+          "end_time": 849
+        },
+        {
+          "start_time": 849,
+          "title": "You Can Fly!",
+          "end_time": 987
+        },
+        {
+          "start_time": 987,
+          "title": "A Pirate's Life for Me",
+          "end_time": 1108
+        },
+        {
+          "start_time": 1108,
+          "title": "Maroon Cartoon Theme",
+          "end_time": 1125
+        },
+        {
+          "start_time": 1125,
+          "title": "Smile, Darn Ya, Smile!",
+          "end_time": 1236
+        },
+        {
+          "start_time": 1236,
+          "title": "Whale of a Tale",
+          "end_time": 1339
+        },
+        {
+          "start_time": 1339,
+          "title": "Swisskapolka",
+          "end_time": 1428
+        },
+        {
+          "start_time": 1428,
+          "title": "The Merrily Song",
+          "end_time": 1538
+        },
+        {
+          "start_time": 1538,
+          "title": "Bang Goes Old Betsy (Davy Crockett)",
+          "end_time": 1644
+        },
+        {
+          "start_time": 1644,
+          "title": "20,000 Leagues Under the Sea",
+          "end_time": 1750
+        },
+        {
+          "start_time": 1750,
+          "title": "The Ballad of Davey Crockett",
+          "end_time": 1852
+        },
+        {
+          "start_time": 1852,
+          "title": "The Best Time Of Your Life",
+          "end_time": 1967
+        },
+        {
+          "start_time": 1967,
+          "title": "March of the Cards",
+          "end_time": 2150
+        },
+        {
+          "start_time": 2150,
+          "title": "Timekeeper",
+          "end_time": 2270
+        },
+        {
+          "start_time": 2270,
+          "title": "Wish Upon a Star",
+          "end_time": 2372
+        },
+        {
+          "start_time": 2372,
+          "title": "Beautiful Beulah",
+          "end_time": 2465
+        },
+        {
+          "start_time": 2465,
+          "title": "Minnie's Yoo Hoo!",
+          "end_time": 2504
+        },
+        {
+          "start_time": 2504,
+          "title": "Zip-a-Dee-Doo-Dah",
+          "end_time": 2657
+        },
+        {
+          "start_time": 2657,
+          "title": "The Droid Rooms",
+          "end_time": 2840
+        },
+        {
+          "start_time": 2840,
+          "title": "Bella Notte",
+          "end_time": 2998
+        },
+        {
+          "start_time": 2998,
+          "title": "The Phantom Manor Suite (DLP)",
+          "end_time": 3126
+        },
+        {
+          "start_time": 3126,
+          "title": "The Ballad of Pecos Bill",
+          "end_time": 3281
+        },
+        {
+          "start_time": 3281,
+          "title": "Golden Afternoon",
+          "end_time": 3456
+        },
+        {
+          "start_time": 3456,
+          "title": "It's a Small World",
+          "end_time": 3543
+        },
+        {
+          "start_time": 3543,
+          "title": "Be Our Guest",
+          "end_time": 3710
+        }
+      ]
+    },
+    {
+      "id": "epcot-innoventions",
+      "title": "Innoventions Epcot Walt Disney World full Area music (1994-2019)",
+      "sourceVideo": "https://www.youtube.com/watch?v=sXCu4H4GB-Y",
+      "uploader": "Benjamin Roberson",
+      "durationSeconds": 3165,
+      "file": "parks/playlist/epcot-innoventions.mp3",
+      "asset": "epcot-innoventions.mp3",
+      "sha256": "674750b0d5ba5223073aee9b992e9ebc3928822d6aa3d93cc5ab3f70a17525bb",
+      "loudnessTargetLUFS": -20,
+      "encoding": "MP3 128 kbps stereo"
+    }
+  ]
+}

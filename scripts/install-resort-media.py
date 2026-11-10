@@ -26,3 +26,15 @@ print('Verified new park soundtrack.')
 # A previous AAC cache must not shadow the newly installed soundtrack. Preserve it for recovery.
 try: adb('shell','run-as',pkg,'mv','files/parks/music.m4a','files/parks/music.previous.m4a')
 except subprocess.CalledProcessError: pass
+
+# Activate the playlist manifest only after every new recording is verified.
+playlistDir=repo/'assets/parks-and-more/playlist'
+manifest=playlistDir/'playlist.json'
+if manifest.is_file():
+ queue=json.loads(manifest.read_text())
+ for track in queue['tracks']:
+  source=playlistDir/track['asset']
+  assert hashlib.sha256(source.read_bytes()).hexdigest()==track['sha256']
+  install(source,'files/'+track['file'])
+ install(manifest,'files/parks/playlist.json')
+ print('Verified Parks instrumental playlist; resume state is retained.')
