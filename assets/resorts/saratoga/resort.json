@@ -1,0 +1,29 @@
+{
+  "id": "saratoga",
+  "name": "Saratoga Springs Resort & Spa",
+  "family": "Paluch Family",
+  "background": "background.png",
+  "music": "music.mp3",
+  "buttons": [
+    {
+      "label": "Watch TV",
+      "package": "com.amazon.firetv.youtube.tv"
+    },
+    {
+      "label": "Disney on Demand",
+      "package": "com.disney.disneyplus"
+    },
+    {
+      "label": "Music",
+      "action": "toggleMusic"
+    },
+    {
+      "label": "Settings",
+      "action": "fireStickSettings"
+    },
+    {
+      "label": "Parks & More",
+      "action": "liveWaitTimes"
+    }
+  ]
+}
