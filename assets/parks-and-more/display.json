@@ -33,8 +33,12 @@
   "entertainment": {
     "refreshSeconds": 60,
     "timezone": "America/New_York",
-    "upcomingTodayOnly": true,
+    "upcomingTodayOnly": false,
     "excludeMeetAndGreetOperatingHours": true,
-    "skipFireworksWhenNoneScheduled": true
+    "skipFireworksWhenNoneScheduled": true,
+    "hideElapsedTimes": true,
+    "retainCompletedShowsToday": true,
+    "completedMessage": "No more shows for today",
+    "textColor": "white"
   }
 }

@@ -5,3 +5,5 @@ Six backgrounds are cleaned edits of the screenshots the user supplied: EPCOT, H
 music.mp3 is extracted unchanged from the user-supplied All Star Movies MP3 ZIP. This soundtrack is used only in Parks & More; returning to Saratoga restores its separate soundtrack.
 
 Data: ThemeParks.wiki live/schedule REST for the four parks; Disney Springs public website content/hours endpoint for today; Open-Meteo Lake Buena Vista current conditions; America/New_York clock. Media retain their respective ownership.
+
+Showtime text is white. Elapsed performance starts disappear automatically, including while rotation is paused. Today's completed shows remain visible with “No more shows for today”; a performance with a supplied end time shows “Show in progress” until it ends. Missing end times are not guessed.
