@@ -12,4 +12,4 @@ Animated backgrounds: see [loops/README.md](loops/README.md) for seven processed
 
 Closed parks show “No Active Wait Times” and “All listed attractions are currently unavailable.” Closed/open checks use actual schedule intervals, including overnight hours.
 
-Scheduled Happily Ever After playback is enabled only while Saratoga or Parks is in the foreground. A fresh posted show start plus open-park hours triggers the user-selected recording once. The video is cached in the native installation for reliable completion; the full recording is not uploaded to this public asset repository. It returns to Saratoga when the recording actually ends. See fireworks.json.
+Happily Ever After and Luminous follow the posted Magic Kingdom and EPCOT showtimes while the resort welcome screen or Parks & More is open. A posted start exactly at park closing is eligible. Each performance plays once per scheduled start, and the recording returns to the selected resort when it ends. Trim times and source links are in [fireworks.json](fireworks.json). The recordings are cached in the native installation.
